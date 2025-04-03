@@ -1,0 +1,3049 @@
+
+============Lesson 1===============
+There are 3 Types of errors:
+1) Syntax error 
+2) Logical error 
+3) Run time error
+
+Debugging:  Ability to run the code line by line to trace values , 
+variables and functions that found in your program.
+================================================================
+
+================= Lesson #02 - Breakpoint & Memory Values==================
+
+I write this code and I use Debugging technics and i used the Breakpoint and traced the code
+line by line 
+
+
+using namespace std;
+
+int Mysum(int a, int b){
+
+    int s = 0;
+    s = a + b;
+    return s;
+}
+
+
+int main(){
+   
+    int Arr[5] = {15,16,10,12,5};
+    
+    int a, b , c;
+    
+    a = 10;
+    b = 20;
+    
+    a ++;
+    ++b;
+    
+    c = a + b;
+    
+    cout<< a<<endl;
+    cout<< b<<endl;
+    cout<< c<<endl;
+    
+    cout<<"\n_____Loop_______\n";
+    for(int i = 1; i <= 5; i ++){
+        
+        cout<< i<<endl;
+        a = a + a * i ;
+    }
+    c = Mysum(a,b);
+    cout<<c<<endl;
+
+    return 0;
+}
+Additional informations
+=======================
+
+Breakpoint & Memory Values - Summary
+
+A breakpoint is a debugging tool that allows you to pause the execution of a program at a specific line of code.
+This helps in inspecting variables, memory values, and program flow to find and fix errors efficiently.
+Key Points:
+
+    Setting a Breakpoint:
+        A breakpoint is placed on a line where you want the program to stop.
+        Once hit, the program pauses, allowing you to inspect values.
+
+    Memory Values & Debugging:
+        You can check variable values at runtime.
+        Helps in understanding how data is stored and changes during execution.
+
+    Step Execution:
+        Step Over: Executes the current line and moves to the next.
+        Step Into: Goes inside function calls for deeper analysis.
+        Step Out: Exits the current function and returns to the caller.
+
+    Practical Usage:
+        Used to find logical errors.
+        Helps optimize code performance.
+
+
+=======================================================================================
+Lesson #07 - Step Into, Step Over, and Step Out - Summary
+=============================================================
+When debugging a program, you need to control how you navigate through the code. Debugging tools provide three essential step execution techniques:
+1. Step Into (F11)
+
+    Moves into a function when it is called.
+    Useful when you want to analyze what happens inside a function.
+    If the current line contains a function call, execution will go inside that function.
+
+✅ Example:
+
+void add(int a, int b) {
+    int result = a + b;  // Debugger will go inside this function
+}
+
+int main() {
+    add(3, 5);  // Step Into will take you inside "add" function
+    return 0;
+}
+
+2. Step Over (F10)
+
+    Executes the current line but does not go inside functions.
+    Moves to the next line in the same function.
+    Useful when you don’t need to debug the inner details of a function.
+
+✅ Example:
+
+int main() {
+    int x = 5;
+    int y = 10;
+    int sum = x + y;  // Step Over will execute this line and move to the next one
+    return 0;
+}
+
+3. Step Out (Shift + F11)
+
+    If you are inside a function, Step Out runs the remaining function code and returns to the caller.
+    Useful when you are done analyzing a function and want to go back to the main program.
+
+✅ Example:
+
+void multiply(int a, int b) {
+    int result = a * b;  // Inside function
+}  // Step Out will return to main()
+
+int main() {
+    multiply(4, 6);  // Debugger will return here after Step Out
+    return 0;
+}
+
+Practical Uses of Step Execution in Debugging
+
+    Step Into: Use it when you need to check the inner logic of functions.
+    Step Over: Use it when you only care about the result of a function, not its details.
+    Step Out: Use it when you're inside a function but want to return to the main flow quickly.
+=====================================================================================
+Lesson #08 - Library: Create Your Own Library
+---------------------------------------------
+
+when you want to create your Library for Example you wanna save your all functions you created
+
+if you use Visual studio you can use Ctrl+alt+l and then you will create a new item
+or if it's not work with you, you can create file from explorer naviattion
+and then write the name that you want for your Library and after name . h
+and save the file
+and then go to the file and write 
+# pragma once
+in your Library file
+
+and write 
+
+namespace Mylib{
+
+    in here 
+    you can create or add any functions that you want
+}
+
+and then it's okay now you've your own library file
+
+add any functions that you want to add
+    
+=====================================================================================
+Lesson #09 - Ternary Operator: Short Hand IF 
+==================================================
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <vector>
+#include "MyLib.h"
+using namespace MyLib;
+using namespace std;
+
+
+int main(){
+   
+   int Number = 0;
+
+   cout<<"Hello Enter Number: ";
+   cin>> Number;
+   
+//    (Number < 0) ? cout<<"Negative\n" : cout<<"Positive\n";
+
+
+    (Number == 0) ? cout<<"The number is zero\n" : (Number < 0) ? cout<<"Negative\n" : cout<<"Positive\n";
+
+    return 0;
+}
+=====================================================================================
+Lesson #10 - Ranged Loop (Range-Based For Loop) - Summary
+
+A Ranged Loop, also known as a Range-Based For Loop, is a modern way to iterate over arrays, 
+vectors,and other iterable containers in C++. It simplifies iteration by eliminating the need for explicit indexing.
+for (data_type variable : container) {
+    // Code to execute
+}
+
+
+    container is the array, vector, or any iterable collection.
+    variable represents each element in the container during each iteration.
+2. Example with an Array
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    for (int num : numbers) {  
+        cout << num << " ";  // Output: 10 20 30 40 50
+    }
+
+    return 0;
+}
+
+✅ Explanation: The loop automatically iterates over each element in numbers, assigning it to num.
+
+=====================================================================================
+Lesson #11 - Validate Number
+
+
+int ReadNumberValidation(){
+
+
+    /*When you decide to use this function don't forget to include the library of limits
+    #include <limits> // include this header for numeric_limits
+
+    */
+
+	int Number = 0;
+	
+	cout<<"Please Enter Number: ";
+	cin>> Number;
+
+	while(cin.fail()){
+
+	// user didn't input a number
+	cin.clear(); // this line is responsible to delete the user input
+
+	cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+	
+	cout<<"Invalid Number,Enter a Valid one: "<<endl;
+
+	cout<<"Enter A Number: ";
+	cin>>Number;
+
+	}// End Of While
+
+	return Number;
+}
+=====================================================================================
+Lesson #14 - Declaration Vs Definition 
+===========================================
+
+In C++, declaration and definition are two different concepts that are essential in programming.
+Understanding the difference helps in writing clean and efficient code.
+1. What is a Declaration?
+A declaration tells the compiler that a variable, function, or class exists, but it does not allocate
+memory or provide implementation. It is just a promise to the compiler that the entity will be defined later.
+
+Why Use Declarations?
+
+    Helps in organizing code, especially in header files (.h).
+    Allows functions and variables to be used in multiple files.
+
+
+2. What is a Definition?
+
+A definition is when a variable or function is fully implemented, meaning memory is allocated,
+and the logic is provided.
+
+3. Declaration vs. Definition in Functions
+int add(int A, int B);
+
+int main(){
+
+    cout<<add(10,20)<<endl;
+
+ return 0;
+}
+
+
+int add(int A, int B){
+
+    return A + B;
+}
+===============================================================
+Lesson #15 - Default Parameters 
+=================================
+
+Default Parameters in C++ - Summary
+
+Default parameters allow you to set a default value for function parameters, making them optional 
+when calling the function. If the argument is not provided, the function uses the default value.
+==================================================================================================
+
+void Greet(string Name = "Guest"){
+
+    cout<<"Hello, "<<Name<<endl;
+}
+
+int Add(int A = 0,int B = 0, int C= 0, int D =0){
+
+    return (A +B + C + D);
+}
+
+int main(){
+
+   Greet();
+    Greet("Dlovan");
+
+    cout<<Add(10,20)<<endl;
+    cout<<Add(50,30,50)<<endl;
+    cout<<Add(100,200,350,410)<<endl;
+
+ return 0;
+}
+==================================================================================================
+Lesson #16 - Function Overloading 
+===================================
+Function Overloading in C++ – Summary
+
+What is Function Overloading?
+Function overloading allows multiple functions to have the same name but with different 
+parameters (number or type). 
+The compiler determines which function to call based on the arguments provided.
+1. Basic Rules of Function Overloading
+
+    Functions must have the same name.
+    They must have different parameter lists (number or data type).
+    Return type does NOT matter (it cannot be used to differentiate functions).
+
+int AddNumbers(int A, int B){
+
+    return (A + B);
+}
+
+double AddNumbers(double A, double B,double C){
+
+    return (A + B + C);
+}
+
+int main(){
+
+  cout<<AddNumbers(10,20)<<endl;
+  //cout<<AddNumbers(1.5,20.6)<<endl;
+  cout<<AddNumbers(1.5,20.6,30.10)<<endl;
+
+ return 0;
+}
+====================================================================
+Lesson #17 - Call Stack/Call Hierarchy 
+=========================================
+1. What is the Call Stack?
+The Call Stack is a data structure used by the CPU to keep track of function calls in a program.
+It follows the LIFO (Last In, First Out) principle,
+meaning the last function called is the first one to finish.
+
+2. How the Call Stack Works
+
+Whenever a function is called:
+
+    The function's execution context (parameters, local variables, return address)
+    is pushed onto the stack.
+    When the function finishes execution, it is popped from the stack.
+    The program then continues execution from the previous function.
+
+For Example:
+============================
+void Function4(){
+
+    cout<<"Hello, I'm Function 4 :-)\n";
+
+}
+void Function3(){
+
+    Function4();
+
+}
+void Function2(){
+
+    Function3();
+
+}
+void Function1(){
+
+    Function2();
+
+}
+int main(){
+
+    Function1();
+ return 0;
+}
+=================================================================================
+  Lesson #19 - Recursion 
+=================================
+
+What is Recursion?
+Recursion is a programming technique where a function calls itself to solve smaller instances of the 
+same problem. Each recursive call reduces the problem until it reaches a base case,
+ which stops the recursion.
+
+How Recursion Works (Example)
+
+==================
+The First program
+
+
+void PrintNumbersFromMToN(int M, int N){
+
+    if(M >= N){
+        
+        cout<<M<<endl;
+        
+        PrintNumbersFromMToN(M - 1 , N);
+        
+    }
+}
+
+
+int main(){
+
+    PrintNumbersFromMToN(6,1);
+ return 0;
+}
+=======================
+The Second Homwork
+======================
+
+int MyPower(int Base, int Power){
+
+    if (Power == 0)
+        return 1;
+    else{
+
+        return (Base * MyPower(Base, Power - 1));
+    }
+}
+
+
+int main(){
+
+    cout<<MyPower(2,4)<<endl;
+ return 0;
+}
+==============================================================
+Lesson #20 – Static Variables
+============================
+What is a Static Variable?
+A static variable is a variable that retains its value between multiple function calls.
+Unlike local variables, which get destroyed when the function ends,
+static variables maintain their value across function calls.
+=========================
+Syntax & Example of Static Variables
+
+
+
+void MyFunction(){
+
+   static int Number = 1;
+    
+    cout<<"The Number Is: "<< Number<<endl;
+
+    Number ++;
+}
+
+int main(){
+
+    MyFunction();
+    MyFunction();
+    MyFunction();
+    
+ return 0;
+}
+
+Use Cases of Static Variables
+
+Static variables are useful when:
+✅ You need to keep track of function calls (like a counter).
+✅ You want to store function states between calls.
+✅ You need a cache/memoization mechanism in recursive functions.
+=============================================
+Lesson #21 - Automatic Variables
+==================================
+What are Automatic Variables?
+Automatic variables are local variables that are created automatically when a function starts and
+destroyed when the function ends. In C++, all local variables by default are automatic,
+even if we don’t explicitly declare them as such.
+
+They are stored in the stack memory.
+Their lifetime is limited to the function or block they are declared in.
+They are reinitialized every time the function is called.
+
+Syntax & Example of Automatic Variables
+====================================
+int main(){
+
+    auto Data = 1;
+    auto Data2 = 20.4;
+    auto Data3 = "Ahmed";
+
+    cout<<Data<<endl;
+    cout<<Data2<<endl;
+    cout<<Data3<<endl;
+        
+ return 0;
+}
+=============================================
+Lesson #22 - Register Variable 
+========================================
+What are Register Variables?
+A register variable is a special type of variable that is stored in the CPU registers instead of RAM, 
+making access to it faster.
+The register keyword is used to suggest to the compiler that the variable should be stored in a register.
+==============================================================
+Lesson #23 - Integer Format (printf) 
+===================================
+What is printf?
+printf is a C-style function used for formatted output. Unlike cout, printf provides precise 
+control over formatting. It is commonly used in C and C++ when performance and
+formatting flexibility are important.
+=======================================
+Integer Format Specifiers in printf
+
+When using printf, we need format specifiers to define how integers should be displayed.
+Specifier	Description	Example Output (printf("%d", 25);)
+%d / %i	Signed decimal integer	25
+%u	Unsigned decimal integer	25 (for unsigned int)
+%o	Octal integer (base 8)	31 (for 25)
+%x	Hexadecimal integer (lowercase)	19 (for 25)
+%X	Hexadecimal integer (uppercase)	19 (for 25)
+%ld / %li	Long integer	25 (for long int)
+%lu	Unsigned long integer	25 (for unsigned long)
+Examples of Integer Formatting with printf
+==================================================
+
+
+int main(){
+
+    int page = 1, totalPages = 10;
+
+    printf("The Page Number = %d \n",page);
+    printf("You Are In Page %d Out %d \n",page , totalPages);
+    
+    // width specification
+    printf("The Page Number = %0*d \n", 2 ,page);
+    printf("The Page Number = %0*d \n", 3 ,page);
+    printf("The Page Number = %0*d \n", 4, page);
+    int Result1 = 20, Result2 = 30;
+    printf("The Result Of %d + %d = %d \n",Result1, Result2,Result1 + Result2);
+
+ return 0;
+}
+==============================================================================
+Lesson #24 - Float Format (printf) 
+=====================================
+What is printf?
+printf is a function from the C standard library used for formatted output.
+It provides precise control over the display of floating-point numbers,
+which is useful when working with decimals.
+==============================================
+Floating-Point Format Specifiers in printf
+When using printf, we use format specifiers to define how floating-point numbers should be displayed.
+
+Specifier	Description	Example Output (printf("%f", 12.34567);)
+%f	Fixed-point notation (default: 6 decimal places)	12.345670
+%.nf	Fixed-point with n decimal places	12.35 (%.2f)
+%e / %E	Scientific notation (lowercase/uppercase)	1.234567e+01
+%g / %G	Automatic (chooses %f or %e based on value)	12.3457
+===========================================================================
+
+int main(){
+
+    float PI = 3.14159265;
+    
+    printf("Precision Specification of %.*f\n", 1, PI);
+    printf("Precision Specification of %.*f\n", 2, PI);
+    printf("Precision Specification of %.*f\n", 3, PI);
+    printf("Precision Specification of %.*f\n", 4, PI);
+
+    float x  = 7.0, y = 9.0;
+    printf("The float division is : %.3f / %.3f = %.3f\n",x,y,x/y);
+    
+    double d = 12.45;
+    printf("The double value is: %.3f\n",d);
+    printf("The double value is: %.4f\n",d);
+ return 0;
+}
+===========================================================================
+Lesson #25 - String and Char Format (printf) 
+=================================================
+How it works it the same similer to the programs above on formating 
+let's see
+=======================================================
+
+
+int main(){
+
+    char Name[] = "Ahmed Zakaria";
+    char SchoolName [] ="University of The People";
+
+    printf("Dear %s, How Are You? \n\n",Name); 
+    printf("Welcome To %s School!\n\n", SchoolName);
+
+    char S = 'S';
+    printf("Setting The Width Of S: %*c\n",1,S);
+    printf("Setting The Width Of S: %*c\n",2,S);
+    printf("Setting The Width Of S: %*c\n",3,S);
+    printf("Setting The Width Of S: %*c\n",4,S);
+    
+    
+ return 0;
+}
+====================================================
+Lesson #26 - Setw Manipulator 
+==============================
+The setw (set width) manipulator in C++ is used to control the width of the output field when
+displaying text or numbers. It helps in formatting output neatly, especially when dealing with tables,
+reports, or structured data.
+==================================
+For Example:
+=====================
+
+int main(){
+
+    cout<<"---------|--------------------------------|---------|"<<endl;
+    cout<<" Code    |          Name                  |   Mark  |"<<endl;
+    cout<<"---------|--------------------------------|---------|"<<endl;
+    
+    cout<<setw(9)<<"C101"<<"|"<<setw(32)<<"Inroduction To Programming 1"<<"|"<<setw(9)<<"90"<<"|"<<endl;
+    cout<<setw(9)<<"C102"<<"|"<<setw(32)<<"Inroduction To Mathmatics"<<"|"<<setw(9)<<"70"<<"|"<<endl;
+    cout<<setw(9)<<"C104"<<"|"<<setw(32)<<"Inroduction To Phisycs"<<"|"<<setw(9)<<"98"<<"|"<<endl;
+    cout<<"---------|--------------------------------|---------|"<<endl;
+    
+ return 0;
+}
+===============================================================
+The Output:
+==================
+---------|--------------------------------|---------|
+ Code    |          Name                  |   Mark  |
+---------|--------------------------------|---------|
+     C101|    Inroduction To Programming 1|       90|
+     C102|       Inroduction To Mathmatics|       70|
+     C104|          Inroduction To Phisycs|       98|
+---------|--------------------------------|---------|
+=====================================================================
+Lesson # 27 - Two Dimensional Arrays 
+=====================================
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int Arr[3][4] = {
+        
+        {1,2,3,4},
+        {5,6,7,8},
+        {10,12,13,14}
+    };
+    
+
+for(int i = 0; i < 3; i ++){
+    
+    for(int j = 0; j < 4; j ++){
+        
+     cout<<Arr[i][j]<<" ";
+    }
+    cout<<endl;
+}
+    return 0;
+}
+======================================
+ The Output:
+ =============
+1 2 3 4 
+5 6 7 8 
+10 12 13 14 
+================
+Two Dimensional Array
+=====================
+int main(){
+    
+    int Arr[10][10];
+
+    for(int i = 0; i < 10; i++){
+    
+        for(int j = 0; j < 10; j++){
+            
+            Arr[i][j] = (i + 1) * (j + 1);
+        }
+    }
+
+    for (int i = 0; i < 10; i ++){
+
+        for(int j = 0; j < 10; j++){
+            
+            printf("%0*d ", 2, Arr[i][j]);
+        }
+        cout<<endl;
+    }
+    
+ return 0;
+}
+=========================================================
+The OutPut
+
+01 02 03 04 05 06 07 08 09 10 
+02 04 06 08 10 12 14 16 18 20 
+03 06 09 12 15 18 21 24 27 30 
+04 08 12 16 20 24 28 32 36 40 
+05 10 15 20 25 30 35 40 45 50 
+06 12 18 24 30 36 42 48 54 60 
+07 14 21 28 35 42 49 56 63 70 
+08 16 24 32 40 48 56 64 72 80 
+09 18 27 36 45 54 63 72 81 90 
+10 20 30 40 50 60 70 80 90 100
+==================================
+A two-dimensional (2D) array is a table-like structure that stores data in rows and columns.
+It is commonly used for matrices, game boards, images, and data tables.
+
+Syntax of 2D Arrays
+
+data_type array_name[rows][columns];
+✅ Example:
+
+int matrix[3][4]; // A 3-row, 4-column array
+
+This creates an array like:
+
+  [ 0, 0, 0, 0 ]
+  [ 0, 0, 0, 0 ]
+  [ 0, 0, 0, 0 ]
+
+Declaring and Initializing a 2D Array
+
+You can initialize a 2D array while declaring it:
+
+int matrix[2][3] = {
+    {1, 2, 3}, 
+    {4, 5, 6}
+};
+
+🟢 Memory Representation:
+
+  [ 1, 2, 3 ]
+  [ 4, 5, 6 ]
+
+✅ You can also omit the row size, but the column size must be specified:
+int matrix[][3] = {
+    {7, 8, 9},
+    {10, 11, 12}
+};
+
+Accessing Elements in a 2D Array
+
+Each element is accessed using row and column indexes:
+
+cout << matrix[0][1];  // Output: 2
+cout << matrix[1][2];  // Output: 6
+
+✅ Indexes start from 0 (first row is matrix[0], second row is matrix[1], etc.).
+
+Looping Through a 2D Array
+
+To process a 2D array, use nested loops:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int matrix[2][3] = {{1, 2, 3}, {4, 5, 6}};
+
+    for (int i = 0; i < 2; i++) { // Loop through rows
+        for (int j = 0; j < 3; j++) { // Loop through columns
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl; // New line after each row
+    }
+    return 0;
+}
+
+🟢 Output:
+
+1 2 3
+4 5 6
+
+✅ Nested loops help iterate over each row and column.
+======================================================
+============================================================
+
+  Lesson # 28 - Introduction , Declaration and Initialization 
+  ============================================================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+int main(){
+
+    vector<int> vNumber=  {1,12,20,30};
+    
+    for(int Number : vNumber){
+
+        cout<<Number<<" ";
+    }
+    cout<<endl;
+ return 0;
+}
+The Program Above is printing each number but it takes a copy from our vector
+and this is slow on long term
+to handle this program we need to print the reference &
+let's see how it Works
+=======================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+int main(){
+
+    vector<int> vNumber=  {1,12,20,30};
+    
+    for(int &Number : vNumber){
+
+        cout<<Number<<" ";
+    }
+    cout<<endl;
+ return 0;
+}
+=========================
+The Output:
+1 12 20 30 
+======================================================================
+Lesson # 29 - Add elements 
+=============================
+
+int main(){
+    vector<int> vNumber;
+
+    vNumber.push_back(10);
+    vNumber.push_back(20);
+    vNumber.push_back(30);
+    vNumber.push_back(40);
+    vNumber.push_back(50);
+    
+    for(int &Numbers : vNumber){
+        
+        cout<<Numbers<<endl;
+    }
+    
+ return 0;
+}
+==========================================
+Let's take an example:
+======================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+void ReadNumbers(vector <int> &vNumbers){
+
+    char Y = 'y';
+    int Number = 0;
+
+    do{
+
+        cout<<"Please Enter Number: ";
+        cin>> Number;
+        
+        vNumbers.push_back(Number);
+
+        cout<<"Do you Want To Add More Press y/n: ";
+        cin>> Y;
+
+    }while(Y == 'Y'|| Y == 'y');
+}
+
+void PrintVectorNumbers(vector <int> &vNumbers){
+
+    for (int &Number : vNumbers){
+
+        cout<<Number<<endl;
+    }
+}
+
+int main(){
+
+    vector<int> vNumber;
+
+    ReadNumbers(vNumber);
+    PrintVectorNumbers(vNumber);
+  
+ return 0;
+}
+===============================================================
+Lesson # 30 - Vector of Structure 
+===========================================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+struct sData{
+
+    string F_Name = "";
+    string Last_Name= "";
+    short Salary;
+};
+
+
+int main(){
+
+    vector <sData> vData;
+
+    sData data;
+
+    data.F_Name = "Ahmed";
+    data.Last_Name =  "Zakaria";
+    data.Salary = 6000;
+
+    vData.push_back(data);
+
+    data.F_Name = "Mohammed";
+    data.Last_Name = "Zakaria";
+    data.Salary = 5000;
+
+    vData.push_back(data);
+    
+
+    data.F_Name = "Dalovan";
+    data.Last_Name = "Majeed";
+    data.Salary = 7000;
+
+    vData.push_back(data);
+
+
+    for(sData &Data : vData){
+
+        cout<<"First Name: "<< Data.F_Name<<endl;
+        cout<<"Last Name: "<< Data.Last_Name<<endl;
+        cout<<"Salary   : "<< Data.Salary<<endl;
+        cout<<endl;
+        
+    }
+ return 0;
+}
+===========================================================
+Let's take an example:
+===========================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+struct stEmployees{
+
+    string F_Name ;
+    string Last_Name;
+    short Salary;
+};
+
+void ReadEmployees(vector <stEmployees>& vEmployees){
+
+    char More = 'y';
+    stEmployees Data;
+
+
+    while (More == 'Y' || More == 'y')
+    {
+        cout<<"Enter First Name: ";
+        cin>> Data.F_Name;
+        
+        cout<<"\nEnter Last Name: ";
+        cin>> Data.Last_Name;
+        
+        cout<<"\nEnter Salary: ";
+        cin>> Data.Salary;
+        
+        vEmployees.push_back(Data);
+        
+        cout<<"\nDo you want to add more y/n: ";
+        cin>> More;
+    }
+}
+
+void PrintEmployees(vector <stEmployees>& vEmployees){
+    
+    cout<<"\nEmployees Data"<<endl;
+    
+    for(stEmployees &Data: vEmployees){
+        
+        cout<<"First Name: "<<Data.F_Name<<endl;
+        cout<<"Last Name : "<<Data.Last_Name<<endl;
+        cout<<"Salary    : "<<Data.Salary<<endl;
+        
+        cout<<endl;
+    }
+}
+
+
+int main(){
+    
+    vector <stEmployees> vEmployees;
+    
+    ReadEmployees(vEmployees);
+    PrintEmployees(vEmployees);
+
+ return 0;
+}
+============================================================================
+
+  Lesson # 31 - Remove elements 
+  =================================
+
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+int main(){
+    
+    vector <int> vNumbers;
+
+    vNumbers.push_back(10);
+    vNumbers.push_back(20);
+    vNumbers.push_back(30);
+    vNumbers.push_back(40);
+
+
+    cout<<"Vector Size: "<<vNumbers.size()<<endl;
+    
+    cout<<"The Vector Numbers: "<<endl;
+    
+
+    vNumbers.pop_back();
+
+
+    for(int Numbers: vNumbers){
+
+        cout<<Numbers<<endl;
+    }
+    
+ return 0;
+}
+============================================================================
+
+  Lesson #32 - Vector Functions 
+  ==============================
+
+we've some functions used with vector
+
+front() this function bring the first element in the vector
+back() this function bring the last element in the vector
+size () bring the size of all vector
+capacity() over all of vector type or size
+empty(); // this fucntion is for check if the vector empty or not
+clear() this function if use if you wanna clear the all vector
+
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+int main(){
+    
+    vector <int> vNumbers;
+
+    vNumbers.push_back(10);
+    vNumbers.push_back(20);
+    vNumbers.push_back(30);
+    vNumbers.push_back(40);
+
+    cout<<"The Size is: "<<vNumbers.size()<<endl;
+    
+    vNumbers.pop_back();
+
+    cout<<"The Size After Deleting one element: "<<vNumbers.size()<<endl;
+
+ return 0;
+}
+=====================================================================================
+
+  Lesson #33 - Call ByRef/ByVal Important Review. 
+======================================================================
+Call by Value vs. Call by Reference in C++
+
+When passing arguments to a function, C++ supports two methods:
+1️⃣ Call by Value (Pass by Value)
+2️⃣ Call by Reference (Pass by Reference)
+
+Understanding these concepts is crucial for writing efficient and bug-free programs!
+
+1️⃣ Call by Value (Pass by Value)
+
+    A copy of the actual parameter is passed to the function.
+    Modifications inside the function do not affect the original variable.
+    This method is safe but can be inefficient for large data structures.
+
+    ✅ Example:
+
+#include <iostream>
+using namespace std;
+
+void Increment(int num) {  
+    num = num + 1;  
+    cout << "Inside Function: " << num << endl;
+}
+
+int main() {
+    int x = 5;
+    Increment(x);  
+    cout << "Outside Function: " << x << endl;
+    return 0;
+}
+
+🔹 Output:
+
+Inside Function: 6
+Outside Function: 5
+========================================================
+
+2️⃣ Call by Reference (Pass by Reference)
+
+    A reference to the original variable is passed to the function.
+    Changes made inside the function affect the original variable.
+    More efficient for large data structures (e.g., vectors, strings).
+
+✅ Example:
+
+#include <iostream>
+using namespace std;
+
+void Increment(int &num) {  
+    num = num + 1;  
+    cout << "Inside Function: " << num << endl;
+}
+
+int main() {
+    int x = 5;
+    Increment(x);  
+    cout << "Outside Function: " << x << endl;
+    return 0;
+}
+
+🔹 Output:
+
+Inside Function: 6
+Outside Function: 6
+================================================
+
+  Lesson #34 - Creating References 
+=====================================================
+I'll do an example to understand
+==================================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <string>
+#include <vector>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+
+int main(){
+    
+    int a = 10; here i create in stac variable a
+    int &x = a; // when i do this that's mean the x and a for the same reference
+
+    cout<< &a<<endl; to check you can print the reference for a 
+    cout<< &x<<endl; and you can also print the reference for x 
+
+    // you will see the same reference for both 
+
+     x = 15 ; and if you edit the value x for example 15 , that's mean the a have 15 too
+
+    cout<< a <<endl; // and if you print a  
+    cout<< x <<endl; // and print x you will the same value is: 15 :) that's it
+
+ return 0;
+}
+================================================================================================
+Lesson #35 - What is Pointer? 
+=================================
+🔹 What is a Pointer in C++?
+A pointer is a variable that stores the memory address of another variable. 
+Instead of storing a direct value, it holds a reference to a location in memory.
+
+📌 Key Characteristics of Pointers:
+
+    They store memory addresses (not actual values).
+
+    They allow dynamic memory allocation.
+
+    They provide efficient ways to handle arrays and structures.
+
+🔹 Declaring and Using Pointers
+
+A pointer is declared using the * symbol.
+
+✅ Syntax:
+
+datatype *pointer_name;
+
+🔹 Pointer Operations
+Operation	Description	Example
+& (Address-of)	Gets the memory address of a variable	ptr = &x;
+* (Dereference)	Accesses the value at the stored address	cout << *ptr;
+ptr++	Moves to the next memory location	Useful for arrays
+ptr--	Moves to the previous memory location	Useful for arrays
+
+For Example:
+=============
+
+
+int main(){
+    
+    int a = 10;
+    int b = 15;
+
+
+    cout<<"a value = "<<a<<endl;
+    cout<<"a Address = " <<&a<<endl;
+    cout<<"--------------------"<<endl;
+    
+    cout<<"b value = "<< b <<endl;
+    
+    cout<<"b Address = "<< &b <<endl;
+
+    int *ptr = &a;
+    cout<<"Pointer value for a: "<< ptr<<endl;
+    
+    ptr = & b;
+    cout<<"Pointer value for b: "<<ptr<<endl;
+ return 0;
+}
+==============================
+The output:
+
+a value = 10
+a Address = 0x7fffffffdb78
+--------------------
+b value = 15
+b Address = 0x7fffffffdb7c
+Pointer value for a: 0x7fffffffdb78
+Pointer value for b: 0x7fffffffdb7c
+
+==========================================================================================
+Lesson #36 - Dereferencing Pointer 
+===================================
+🔹 What is Dereferencing a Pointer?
+
+Dereferencing a pointer means accessing the value stored at the memory address a pointer is pointing to.
+It is done using the * (asterisk) operator.
+
+📌 Key Concept:
+
+    A pointer stores the memory address of a variable.
+
+    Dereferencing retrieves the actual value stored at that address.
+
+for example:
+===================
+
+int main(){
+    
+    int A = 20;
+
+    cout<<"A Valude: "<<A<<endl;
+    cout<<"A Address: "<< &A<<endl;
+
+    int *p = &A;
+
+    cout<<"Pointer Value: "<<p<<endl;
+
+    cout<<"Pointer Defrancing: "<< *p<<endl;
+
+    cout<<"---------------"<<endl;
+
+    *p = 30; // i changed the value from the address using the pointer defrancing
+    
+    cout<<"A Value: "<< A<<endl;
+    cout<<"A Address: "<< &A<<endl;
+    
+    cout<<"Pointer Value: "<< p<<endl;
+    cout<<"Pointer Defrancing: "<<*p<<endl;
+    
+ return 0;
+}
+====================================
+The Output:
+====================
+
+A Valude: 20
+A Address: 0x7fffffffdb7c
+Pointer Value: 0x7fffffffdb7c
+Pointer Defrancing: 20
+---------------
+A Value: 30
+A Address: 0x7fffffffdb7c
+Pointer Value: 0x7fffffffdb7c
+Pointer Defrancing: 30
+====================================================================
+Lesson #39 - Call by Reference: Using pointers 
+=================================================
+🔹 Pointers vs References in C++
+Both pointers and references are used to handle memory addresses, 
+but they work in different ways. Let’s break it down:
+
+1️⃣ Definition
+Concept	Pointer	Reference
+Definition	A variable that stores the memory address of another variable.	An alias (another name) for an existing variable.
+Can be NULL?	✅ Yes (nullptr)	❌ No, must be initialized.
+Can be reassigned?	✅ Yes, can point to another address.	❌ No, always refers to the same variable.
+Needs Dereferencing (*)?	✅ Yes (*ptr)	❌ No, used directly.
+Memory Address Manipulation	✅ Yes, allows pointer arithmetic.	❌ No, behaves like a normal variable.
+
+الريفرنس بيشير لنفس المتغير وبيكون اسم دلع او الياس 
+لكن البوينتر هوا بيكون متغير بيحتوي علي عنوان متغير اخر
+وده بيعطيني الامكانيه اني اعدل عليه  او اخليه يشير لمتغير تاني
+عكس الريفرنس بيكون فقط بيشير لمتغير اخر
+
+===================================================================================================================
+Lesson #39 - Call by Reference: Using pointers 
+==================================================
+
+📌 Lesson #39 - Call by Reference: Using Pointers in C++
+In C++, Call by Reference using Pointers allows functions to modify the original variables rather than working with a copy.
+This is achieved by passing pointers as function parameters.
+
+
+1️⃣ What is Call by Reference Using Pointers?
+
+    Instead of passing a copy of the variable (Call by Value), we pass its address.
+
+    The function works on the actual data using dereferencing (*).
+
+    Any modification inside the function affects the original variable.
+2️⃣ Syntax Example: Call by Reference using Pointers
+
+#include <iostream>
+using namespace std;
+
+void updateValue(int *p) {
+    *p = 100;  // Modifying the original value using the pointer
+}
+
+int main() {
+    int num = 50;
+    cout << "Before function call: " << num << endl;
+
+    updateValue(&num);  // Passing the address of num
+
+    cout << "After function call: " << num << endl;
+    return 0;
+}
+
+🛠 Output:
+
+Before function call: 50
+After function call: 100
+==================================
+For example:
+=====================
+void Swap(int& A, int& B){
+
+    int temp;
+    
+    temp = A;
+    A = B;
+    B = temp;
+}
+
+int main(){
+    
+    int a = 20 , b = 30;
+
+    cout<<"Print The values Before Swaping: "<<endl;
+
+    cout<<"A > "<<a<<endl;
+    cout<<"B > "<<b<<endl;
+    
+    Swap(a,b);
+
+    cout<<"The Values After Swap: "<<endl;
+    
+    cout<<"A > "<<a<<endl;
+    cout<<"B > "<<b<<endl;
+    
+    
+ return 0;
+}
+in this example i used the reference 
+=========================================
+and in this example we will use pointers:
+=========================================
+void Swap(int * A, int *B){
+
+    int temp;
+    
+    temp = *A;
+    *A = *B;
+    *B = temp;
+}
+
+int main(){
+    
+    int a = 20 , b = 30;
+
+    cout<<"Print The values Before Swaping: "<<endl;
+
+    cout<<"A > "<<a<<endl;
+    cout<<"B > "<<b<<endl;
+
+    Swap(&a,&b);
+
+    cout<<"The Values After Swap: "<<endl;
+    
+    cout<<"A > "<<a<<endl;
+    cout<<"B > "<<b<<endl;
+    
+    
+ return 0;
+}
+===============================================================
+Lesson #40 - Pointers and Arrays 
+======================================
+
+int main(){
+    
+    int Arr[4] ={10,20,30,40};
+    int *ptr;
+    ptr = Arr;
+
+    cout<<"Addresses Are: "<<endl;
+    
+    cout<<ptr<<endl;
+    cout<<ptr+1<<endl;
+    cout<<ptr+2<<endl;
+    cout<<ptr + 3<<endl;
+
+
+    cout<<"Values Are: "<<endl;
+    
+    for(int i = 0; i <= 4; i ++){
+        
+        cout<< *(ptr + i)<<endl;
+    }
+    
+    
+ return 0;
+}
+===========================================
+output:
+=================
+
+Addresses Are: 
+0x7fffffffdb70
+0x7fffffffdb74
+0x7fffffffdb78
+0x7fffffffdb7c
+Values Are: 
+10
+20
+30
+40
+========================================================================================
+Lesson #41 - Pointers and Structure 
+==================================================
+
+struct stEmployee{
+    
+    string Name;
+    int salary;
+    short Age;
+};
+
+int main(){
+
+stEmployee Employee1, *ptr;
+
+    Employee1.Name = "Ahmed Zakaria";
+    Employee1.salary = 5000;
+    Employee1.Age = 22;
+    
+    cout<<Employee1.Name<<endl;
+    cout<< Employee1.salary<<endl;
+    cout<<Employee1.Age<<endl;
+    ptr = &Employee1;
+    
+    cout<<"We Will Print The Data Using Pointer\n";
+
+    cout<<ptr->Name<<endl;
+    cout<<ptr->salary<<endl;
+    cout<<ptr->Age<<endl;
+    
+ return 0;
+}
+if you want to print the address for name or any variable using pointer
+you will do it like that cout<<&ptr->Name<<endl;
+========================================================================
+
+  Lesson #42 - Pointer to Void 
+  ================================
+int main(){
+
+    int x = 50;
+
+    cout<<x <<endl;
+
+    void *ptr;
+    ptr = &x;
+
+    cout<<"X Address: "<< ptr<<endl;
+    cout<<"X Value using pointer: "<<*(static_cast<int*>(ptr))<<endl;
+
+    float f = 10.5;
+
+    ptr = &f;
+
+    cout<<"F Address: "<<ptr<<endl;
+    cout<<"F Value using Pointer: "<<*(static_cast<float*>(ptr)) <<endl;
+    
+    
+ return 0;
+}
+================================================================================
+ 
+ ******************************
+  Dynamic Memory Allocation 
+  ******************************
+=============================================================================================
+Lesson #43 - Memory Management: new and delete 
+---------------------------------------------
+using namespace std;
+
+int main(){
+
+    
+    // declare an int pointer
+    int *ptrX;
+
+    // declare an float pointer
+    float *ptrY;
+
+    // dynamically allocate memory
+    ptrX = new int;
+    ptrY = new float;
+
+
+    // assign value to the memory
+    
+    *ptrX = 70;
+    *ptrY = 10.6f;
+
+    cout<<"ptrX value: "<< *ptrX<<endl;
+    cout<<"ptrY value: "<< *ptrY<<endl;
+    
+   // delete the memory
+    delete ptrX;
+    delete ptrY;
+    
+ return 0;
+}
+=============================================================================
+Lesson #44 - Dynamic Arrays: new and delete 
+-------------------------------------------
+using namespace std;
+
+int main(){
+
+    int num = 0; 
+
+    cout<<"Enter Total Number Of Students: ";
+    cin>> num;
+
+    //create a pointer of int
+    float *ptr;
+
+    //  memory allocation of num number of floats;
+    ptr = new float[num];
+
+    cout<<"\nEnter Grades of Students: \n";
+    
+    for(int i = 0; i < num; i ++){
+
+        cout<<"student"<< i + 1<<": ";
+        cin>> *(ptr + i);
+    }
+    cout<<"======================\n";
+    cout<<"Displaying grades of students: "<<endl;
+
+    for(int i = 0; i < num; i ++){
+
+        cout<<"student"<<i+1<<": "<< *(ptr + i)<<endl;
+    }
+    
+    // ptr memory is released
+    delete []ptr;
+
+ return 0;
+}
+============================================================================================
+
+  Lesson #45 - Stack vs Heap 
+====================================
+ChatGPT said:
+📌 Lesson #45 - Stack vs Heap
+
+In C++, memory is allocated in two main regions:
+✅ Stack
+✅ Heap
+
+Each has its own characteristics and use cases. Let’s break them down.
+
+
+1️⃣ Stack (LIFO - Last In, First Out)
+
+📌 The stack is used for storing local variables and function call information.
+🔹 When a function is called, a stack frame is created for it.
+🔹 When the function ends, its stack frame is automatically deleted.
+🔹 Stack Characteristics:
+
+    Fast memory allocation and deallocation.
+
+    Managed automatically by the CPU.
+
+    Limited in size (causing Stack Overflow if exceeded).
+
+    Used for storing local variables and function calls.
+
+🔹 Example of Stack Memory:
+void func() {
+    int x = 10;  // Stored in stack
+} // 'x' is automatically freed when function exits
+
+int main() {
+    func();  
+    return 0;
+}
+
+📌 In this example, x is stored in the stack and automatically removed when func() finishes execution.
+
+===================
+2️⃣ Heap (Dynamic Memory Allocation)
+
+📌 The heap is used for dynamic memory allocation during program execution.
+🔹 You must allocate (new) and deallocate (delete) memory manually.
+🔹 Data in the heap remains allocated until explicitly freed.
+🔹 Heap Characteristics:
+
+    More flexible but slower than stack.
+
+    Not automatically managed, requiring manual memory deallocation.
+
+    Can cause Memory Leaks if not freed properly.
+
+    Allows allocating large amounts of memory dynamically.
+
+🔹 Example of Heap Memory:
+
+int* ptr = new int(25);  // Allocates memory in heap
+cout << *ptr << endl;    // Outputs 25
+delete ptr;              // Frees allocated memory
+
+
+📌 Here, new int(25) reserves memory in the heap, and delete ptr releases it.
+
+3️⃣ Stack vs Heap: Key Differences
+Feature	Stack	Heap
+Speed	Very fast	Slower
+Management	Automatic	Manual (new/delete)
+Memory Size	Limited	Larger but must be managed properly
+Safety	More secure	Prone to Memory Leaks
+
+
+4️⃣ When to Use Stack vs Heap?
+
+✅ Use Stack when:
+
+    You need fast execution.
+
+    Your variables are small and local.
+
+    You want automatic memory management.
+
+✅ Use Heap when:
+
+    You need large memory allocations.
+
+    The data needs to persist beyond a single function call.
+
+    You want dynamic memory allocation.
+
+🎯 Summary
+
+✅ Stack: Fast, automatically managed, good for local variables, but has limited space.
+✅ Heap: More flexible, allows dynamic allocation, but requires manual memory management.
+✅ Proper memory management helps prevent Stack Overflow and Memory Leaks.
+===============================================================================================
+Lesson #46 - Access Elements 
+===============================
+📌 Lesson #46 - Access Elements in a Vector
+===========================================
+A vector in C++ is a dynamic array that allows elements to be accessed in multiple ways.
+This lesson covers different methods to retrieve and modify elements in a vector.
+
+1️⃣ Methods to Access Elements in a Vector
+🔹 1. Using [] (Subscript Operator)
+
+    Access elements using zero-based indexing.
+
+    No bounds checking (⚠️ Might cause errors if the index is out of range).
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> numbers = {10, 20, 30, 40};
+    cout << numbers[2] << endl; // Outputs 30
+    return 0;
+
+    ⚠️ Risk: If you access numbers[10], it won’t warn you—it may cause unexpected behavior.
+=============
+
+🔹 2. Using .at(index) Method
+
+Safer than [] because it checks bounds and throws an error if the index is out of range.
+cout << numbers.at(2) << endl; // Outputs 30
+✅ If the index is invalid, an exception is thrown.
+
+
+🔹 3. Using .front() and .back()
+
+    front() → Returns the first element.
+
+    back() → Returns the last element.
+
+
+cout << numbers.front() << endl;  // Outputs 10
+cout << numbers.back() << endl;   // Outputs 40
+
+
+
+🔹 4. Using Iterators
+
+    Iterators provide flexible access to vector elements.
+
+vector<int>::iterator it = numbers.begin();
+cout << *it << endl; // Outputs first element (10)
+cout << *it << endl; // Outputs first element (10)
+
+🔹 Use a loop to iterate:
+
+for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+    cout << *it << " ";
+}
+
+✅ Prints: 10 20 30 40
+
+
+
+🔹 5. Using Range-Based Loop (C++11+)
+
+    Easier and cleaner than iterators.
+
+for (int num : numbers) {
+    cout << num << " ";
+}
+
+✅ Prints: 10 20 30 40
+
+
+🎯 Summary
+Method	Safe?	When to Use?
+[]	❌ No	Fast, but risky if out of bounds
+.at()	✅ Yes	Use when safety is important
+.front() / .back()	✅ Yes	Get first/last element easily
+Iterators	✅ Yes	Use when working with loops
+Range-based loop	✅ Yes	Best for simple iteration
+
+🚀 Best Practice: Use .at() instead of [] to avoid out-of-bounds errors.
+============================================================================
+
+Let's write some code to practice on this techniqes;
+=====================================================
+
+using namespace std;
+
+int main(){
+
+    
+    vector <int> num {10,20,30,40};
+    
+
+    cout<<"Print Vector Elements using [] method\n";
+
+    cout<<"The First Element in Vector: "<<num[0]<<endl;
+    cout<<"The second Element in Vector: "<<num[1]<<endl;
+    cout<<"The third Element in Vector: "<<num[2]<<endl;
+    cout<<"The forth Element in Vector: "<<num[3]<<endl;
+
+    cout<<"\n****************"<<endl;
+    
+    cout<<"Print Vector Elements Using .at()index Method"<<endl;
+    
+    cout<<"\nThe First Element In Vector: "<< num.at(0)<<endl;
+    cout<<"\nThe Second Element In Vector: "<< num.at(1)<<endl;
+    cout<<"\nThe Third Element In Vector: "<< num.at(2)<<endl;
+    cout<<"\nThe Fourth Element In Vector: "<< num.at(3)<<endl;
+    
+    cout<<"***************"<<endl;
+
+    cout<<"Print first element in verctor using .front() function"<<endl;
+    
+    cout<<"\nThe First Elent In Vector: "<< num.front()<<endl;
+
+
+    cout<<"***************"<<endl;
+
+    cout<<"Print last element in verctor using .back() function"<<endl;
+    
+    cout<<"\nThe Last Element in vector: "<< num.back()<<endl;
+    
+    
+
+ return 0;
+}
+=====================================================================================================
+Lesson #47 - Change Elements 
+=============================
+📌 Lesson #47 - Changing Elements in a Vector
+
+Vectors in C++ allow you to modify elements easily using different methods. 
+This lesson covers how to update elements inside a vector.
+==============================================================
+
+using namespace std;
+
+int main(){
+
+    
+    vector <int> num {10,20,30,40};
+
+    
+    cout<<"Initial Vector: ";
+
+    for(const int& i: num){
+
+        cout<< i<<" ";
+    }
+    cout<<"\n*****************"<<endl;
+
+    // in the range loop we use const to don't allow for the user to update the values using i 
+    // and we used & to don't print the values copying from the orginal vector, we print the vector
+    // by references
+    
+    cout<<"\nupdated vector: ";
+
+    for(int& i : num){
+
+        i = 20;
+        cout<< i <<" ";
+    }
+    /* 
+        in second loop range when we delete the const , this is give us ability to change on the value
+    */
+    cout<<"\n*****************"<<endl;
+    
+    /*
+        Now Let's Change and update the value inside the vectore using two method .at() and [] methods
+    */
+
+   cout<<"Updated Vector: ";
+
+   num.at(0) = 15;
+   num.at(1) = 22;
+   num [2] = 33;
+   num [3] = 55;
+
+   // Now We changed the values inside the vector now let's print them
+
+   for(int&i: num){
+
+        cout<<i <<" ";
+   }
+   cout<<endl;
+
+   
+ return 0;
+}
+===================================================================================================
+📌 Lesson #48 - Vector Iterators
+Vector iterators in C++ are used to traverse and access elements in a vector efficiently. 
+Iterators work like pointers, allowing you to move through a vector without needing an index.
+==========================
+
+
+1️⃣ What is an Iterator?
+
+An iterator is an object that points to elements in a container (like a vector).
+🔹 You can use it to access, modify, and iterate through elements.
+
+
+
+2️⃣ Types of Iterators in Vectors
+🔹 1. begin() and end() Iterators
+
+    begin() → Points to the first element.
+
+    end() → Points one past the last element (⚠️ Not the last element itself).
+
+Example: Using begin() and end()
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> numbers = {10, 20, 30, 40};
+
+    vector<int>::iterator it = numbers.begin(); // Iterator to first element
+
+    cout << *it << endl; // Outputs: 10
+    it++;  // Move to the next element
+    cout << *it << endl; // Outputs: 20
+    return 0;
+}
+
+Let's take an example and using forloop
+-----------------------------------------
+using namespace std;
+
+int main(){
+
+    
+    vector <int> num {10,20,30,40};
+
+    
+    // declare iterator
+
+    vector <int>::iterator iter;
+
+    // use iterator with forloop;
+
+    for(iter = num.begin(); iter != num.end(); iter++){
+
+        if(*iter == 30)
+            break;
+        else 
+        
+        cout<< *iter<<" ";
+    }
+    cout<<endl;
+
+ return 0;
+}
+==========
+The output:
+10 20 
+========================================================================================================
+Lesson #49 - Try Catch 
+=========================
+📌 Lesson #49 - Try-Catch (Exception Handling in C++)
+The try-catch block in C++ is used for exception handling.
+It allows you to detect and handle errors without crashing the program.
+
+1️⃣ What is an Exception?
+An exception is an unexpected error that occurs during program execution, such as:
+🔹 Dividing by zero
+🔹 Accessing an invalid index in an array or vector
+🔹 Invalid memory access
+🔹 Opening a missing file
+
+
+2️⃣ Syntax of Try-Catch
+try {
+    // Code that might cause an exception
+} 
+catch (exception_type variable) {
+    // Handle the exception
+}
+
+3️⃣ Example: Handling Division by Zero
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10, b = 0;
+
+    try {
+        if (b == 0) {
+            throw "Division by zero is not allowed!";
+        }
+        cout << "Result: " << (a / b) << endl;
+    } 
+    catch (const char* errorMessage) {
+        cout << "Error: " << errorMessage << endl;
+    }
+
+    return 0;
+}
+✅ Output: Error: Division by zero is not allowed!
+
+🔹 How it works:
+
+    The throw statement throws an exception if b == 0.
+
+    The catch block catches and handles the error instead of crashing the program.
+
+======================
+Let's take an example to understanding well
+============================================
+using namespace std;
+
+int main(){
+
+    
+    vector <int> num {10,20,30,40};
+
+    try
+    {   cout<<num.at(3)<<endl;
+        cout<<num.at(4)<<endl;
+
+    }
+    catch(...)
+    {
+        cout<<"Sorry Vector Out of bound"<<endl;
+    }
+
+    
+ return 0;
+}
+==========================================================================
+Lesson #50 - String Object: (Common Methods) 
+====================================================
+In C++, the string class provides many built-in functions for working with text efficiently.
+This lesson covers the most common methods used to manipulate and process strings.
+
+
+1️⃣ What is a string in C++?
+
+🔹 A string in C++ is an object from the <string> library.
+🔹 It allows us to work with text data easily.
+📌 Example: Declaring and Using a String
+
+#include <iostream>
+#include <string>   // Include string library
+using namespace std;
+
+int main() {
+    string name = "Ahmed";
+    cout << "Hello, " << name << "!" << endl;
+    return 0;
+}
+
+✅ Output:
+
+Hello, Ahmed!
+
+
+2️⃣ Common String Methods
+Method	Description	Example
+length() / size()	Returns the number of characters in the string	str.length()
+empty()	Checks if the string is empty (true or false)	str.empty()
+append()	Adds another string at the end	str.append(" World")
+insert(pos, str)	Inserts a substring at a specific position	str.insert(2, "ABC")
+erase(pos, len)	Removes part of the string	str.erase(1, 2)
+replace(pos, len, str)	Replaces part of the string with another string	str.replace(1, 2, "XYZ")
+substr(pos, len)	Returns a substring starting at pos	str.substr(1, 3)
+find(str)	Finds the first occurrence of a substring	str.find("lo")
+rfind(str)	Finds the last occurrence of a substring	str.rfind("lo")
+at(index)	Returns the character at a given index	str.at(2)
+c_str()	Converts a string into a C-style string (char*)	str.c_str()
+
+
+
+3️⃣ Examples of String Methods
+🔹 Getting String Length
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string text = "Programming";
+    cout << "Length: " << text.length() << endl;
+    cout << "Size: " << text.size() << endl; // Same as length()
+    return 0;
+}
+
+✅ Output:
+
+Length: 11
+Size: 11
+
+
+
+🔹 Appending and Inserting Text
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string message = "Hello";
+    message.append(" World!");  
+    message.insert(5, ","); 
+
+    cout << message << endl;
+    return 0;
+}
+
+✅ Output:
+
+Hello, World!
+
+
+
+🔹 Erasing and Replacing Text
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string text = "Hello World";
+
+    text.erase(5, 1);    // Remove space
+    text.replace(6, 5, "C++");  // Replace "World" with "C++"
+
+    cout << text << endl;
+    return 0;
+}
+
+✅ Output:
+
+HelloC++
+
+
+
+
+🔹 Extracting a Substring
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string sentence = "C++ Programming";
+
+    string word = sentence.substr(4, 11);  // Extract "Programming"
+    cout << "Extracted Word: " << word << endl;
+
+    return 0;
+}
+
+✅ Output:
+
+Extracted Word: Programming
+
+
+
+🔹 Finding and Accessing Characters
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string text = "Hello, World!";
+
+    int pos = text.find("World");
+    char firstChar = text.at(0);  
+
+    cout << "Position of 'World': " << pos << endl;
+    cout << "First Character: " << firstChar << endl;
+
+    return 0;
+}
+
+✅ Output:
+
+Position of 'World': 7
+First Character: H
+
+
+🎯 Summary
+
+✔ length() / size() → Get string length
+✔ append() / insert() → Add text
+✔ erase() / replace() → Modify text
+✔ substr() → Extract part of the string
+✔ find() → Locate a substring
+✔ at() → Access characters
+
+🚀 Best Practice: Use these functions to make string handling easier and more efficient.
+
+
+=========================================================================================================
+📌 Lesson #51 - Some CCTYPE Functions
+========================================
+
+The <cctype> library in C++ provides useful functions for working with characters.
+These functions help check and modify letters, digits, spaces, and symbols in an efficient way.
+1️⃣ What is <cctype>?
+
+🔹 <cctype> is a C++ header file that includes functions to analyze characters.
+🔹 These functions check character properties (letters, digits, uppercase, lowercase) and convert characters.
+📌 Example: Including <cctype>
+#include <iostream>
+#include <cctype>  // Required for character functions
+using namespace std;
+
+
+
+2️⃣ Common <cctype> Functions
+Function	Description	Example
+isalpha(c)	Checks if c is a letter (A-Z or a-z)	isalpha('A') → true
+isdigit(c)	Checks if c is a digit (0-9)	isdigit('5') → true
+isalnum(c)	Checks if c is a letter or digit	isalnum('A') → true
+isspace(c)	Checks if c is a whitespace (' ', '\t', '\n')	isspace(' ') → true
+islower(c)	Checks if c is a lowercase letter	islower('a') → true
+isupper(c)	Checks if c is an uppercase letter	isupper('A') → true
+tolower(c)	Converts c to lowercase	tolower('A') → 'a'
+toupper(c)	Converts c to uppercase	toupper('a') → 'A'
+
+
+
+3️⃣ Examples of <cctype> Functions
+🔹 Checking Character Types
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+    char ch = 'A';
+
+    if (isalpha(ch)) {
+        cout << ch << " is a letter." << endl;
+    }
+
+    if (isdigit('5')) {
+        cout << "5 is a digit." << endl;
+    }
+
+    return 0;
+}
+
+
+
+✅ Output:
+
+A is a letter.
+5 is a digit.
+
+
+
+
+🔹 Changing Case with tolower() and toupper()
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+    char letter = 'G';
+
+    cout << "Lowercase: " << (char)tolower(letter) << endl;
+    cout << "Uppercase: " << (char)toupper('m') << endl;
+
+    return 0;
+}
+
+✅ Output:
+
+Lowercase: g
+Uppercase: M
+
+
+
+🔹 Removing Spaces from a String
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string text = "He llo Wo rld";
+    string result = "";
+
+    for (char c : text) {
+        if (!isspace(c)) {  // Skip spaces
+            result += c;
+        }
+    }
+
+    cout << "Without spaces: " << result << endl;
+    return 0;
+}
+
+✅ Output:
+
+Without spaces: HelloWorld
+
+
+
+🎯 Summary
+
+✔ isalpha() → Checks if a character is a letter
+✔ isdigit() → Checks if a character is a digit
+✔ isspace() → Checks for spaces
+✔ toupper() / tolower() → Convert case
+
+🚀 Best Practice: Use <cctype> functions to make character processing faster and easier.
+==========================================================================================================
+
+  Lesson #52 - Write Mode: Write Data To File 
+================================================
+
+#include <iostream>   // Include standard input-output library
+#include <fstream>    // Include file handling library
+// #include "MyLib.h" // Custom library (commented out as it's not needed here)
+// using namespace MyLib;
+using namespace std;
+
+int main() {
+    
+    fstream Myfile;  // Declare an fstream object for file operations
+
+    // Open a file named "Myfile.txt" in write mode (ios::out)
+    Myfile.open("Myfile.txt", ios::out); 
+
+    // Check if the file opened successfully
+    if (Myfile.is_open()) {
+        // Write data into the file
+        Myfile << "Ahmed \n";
+        Myfile << "Zakaria\n";
+        Myfile << "Abdo \n";
+
+        // Close the file after writing
+        Myfile.close();
+    }
+
+    return 0;  // Return 0 to indicate successful execution
+}
+
+🔹 Explanation of Code Functionality:
+
+1️⃣ Include Libraries
+
+    <iostream> → For input/output operations.
+
+    <fstream> → For file handling operations.
+
+2️⃣ Declare an fstream object
+
+    Myfile is used for file operations (reading/writing).
+
+3️⃣ Open the file
+
+    Myfile.open("Myfile.txt", ios::out); → Opens the file in write mode (ios::out).
+
+    If the file does not exist, it will be created automatically.
+
+    If the file exists, it will be overwritten.
+
+4️⃣ Check if the file is open
+
+    if (Myfile.is_open()) ensures that the file was opened successfully before writing.
+
+5️⃣ Write data to the file
+
+    The file will contain:
+
+Ahmed 
+Zakaria
+Abdo
+
+
+6️⃣ Close the file
+
+    Myfile.close(); → Closes the file after writing to free system resources.
+
+✅ Best Practice: Always check is_open() before performing file operations.
+========================================================================================================
+
+  Lesson #53 - Append Mode: Append Data to File 
+  ==============================================
+
+#include <iostream>   // Include standard input-output library
+#include <fstream>    // Include file handling library
+// #include "MyLib.h" // Custom library (commented out as it's not needed here)
+// using namespace MyLib;
+
+using namespace std;
+
+int main() {
+
+    fstream Myfile;  // Declare an fstream object for file operations
+
+    // Open the file "Myfile.txt" in append mode (ios::app) along with output mode (ios::out)
+    Myfile.open("Myfile.txt", ios::out | ios::app);  
+
+    // Check if the file opened successfully
+    if (Myfile.is_open()) {
+
+        // Append new data to the file without overwriting existing content
+        Myfile << "Ziad\n";
+        Myfile << "Abdallah\n";
+
+        // Close the file after writing
+        Myfile.close();
+    }
+
+    // Print "Done" message to indicate successful operation
+    cout << "Done" << endl;
+
+    return 0;  // Return 0 to indicate successful execution
+}
+========================================================================================================
+
+  Lesson #54 - Read Mode: Print File Content 
+==================================================
+#include <iostream>   // Include standard input-output library
+#include <fstream>    // Include file handling library
+// #include "MyLib.h" // Custom library (commented out as it's not needed here)
+// using namespace MyLib;
+
+using namespace std;
+
+// Function to print the content of a file
+void PrintFileContent(string FileName){
+
+    fstream Myfile;  // Declare an fstream object for file operations
+
+    // Open the file in read mode (ios::in)
+    Myfile.open(FileName, ios::in);  
+
+    // Check if the file opened successfully
+    if (Myfile.is_open()){
+
+        string line;  // Declare a variable to store each line of the file
+
+        // Read each line of the file until the end is reached
+        while (getline(Myfile, line)) {
+            cout << line << endl;  // Print the current line to the console
+        }
+
+        // Close the file after reading
+        Myfile.close();
+    }
+}
+
+int main(){
+    
+    // Call the function to print content of "Myfile.txt"
+    PrintFileContent("Myfile.txt");
+
+    return 0;  // Return 0 to indicate successful execution
+}
+
+🔹 Explanation of Code Functionality:
+
+1️⃣ Include Libraries
+
+    <iostream> → For input/output operations.
+
+    <fstream> → For file handling operations.
+
+2️⃣ Declare the PrintFileContent function
+
+    This function takes a file name (string FileName) as an argument and reads its content to display it on the console.
+
+3️⃣ Open the file in read mode
+
+    ios::in → Specifies that the file should be opened for reading.
+
+4️⃣ Check if the file is open
+
+    if (Myfile.is_open()) ensures that the file is successfully opened before reading.
+
+5️⃣ Read and display each line of the file
+
+    A while loop uses getline(Myfile, line) to read the file line by line.
+
+    Each line is printed to the console using cout << line << endl;.
+
+6️⃣ Close the file
+
+    Myfile.close(); → Closes the file after reading to free system resources.
+
+7️⃣ Call the function in main()
+
+    PrintFileContent("Myfile.txt"); is called to display the contents of "Myfile.txt" (or any file name you pass).
+
+✅ Best Practice: Always check is_open() to ensure the file is opened correctly before performing read or write operations.
+========================================================================================================
+Lesson #55 - Load Data From File to Vector
+
+
+🔹 Summary
+
+This lesson teaches how to read data from a file and store it into a vector in C++.
+This is useful when dealing with large datasets, where we need to process and manipulate the data efficiently.
+
+🔹 Explanation
+
+1️⃣ Use fstream to Open the File
+
+    The file is opened using ifstream (input file stream) in read mode (ios::in).
+
+    Check if the file opens successfully using is_open().
+
+2️⃣ Read Data from the File
+
+    A while loop reads each line or value from the file.
+
+    The data is stored in a vector using the .push_back() method.
+
+3️⃣ Close the File
+
+    Always close the file after reading to free system resources.
+
+4️⃣ Process the Loaded Data
+
+    The data in the vector can be printed, searched, modified, or used in calculations.
+
+
+🔹 Example Code
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+void LoadDataFromFile(string fileName, vector<string> &data) {
+
+    ifstream file(fileName); // Open file in read mode
+
+    if (!file.is_open()) {  // Check if file opened successfully
+
+        cout << "Error opening file!" << endl;
+        return;
+    }
+
+    string line;
+    while (getline(file, line)) { // Read each line from the file
+        data.push_back(line);  // Store the line in the vector
+    }
+
+    file.close(); // Close the file
+}
+
+int main() {
+    vector<string> fileData; // Declare a vector to store file content
+
+    LoadDataFromFile("data.txt", fileData); // Load file data into vector
+
+    // Print loaded data
+    cout << "File content loaded into vector:" << endl;
+    for (const string &line : fileData) {
+        cout << line << endl;
+    }
+
+    return 0;
+}
+
+
+🔹 Explanation of the Code
+
+✅ ifstream file(fileName); → Opens the file for reading.
+✅ if (!file.is_open()) → Checks if the file was opened successfully.
+✅ while (getline(file, line)) → Reads each line from the file.
+✅ data.push_back(line); → Stores each line into the vector.
+✅ file.close(); → Closes the file after reading.
+✅ for (const string &line : fileData) → Loops through the vector to print its content.
+
+
+🔹 Benefits of Using Vectors for File Data
+
+✔ Dynamic Storage → Vectors automatically resize, making them more flexible than arrays.
+✔ Easy Manipulation → We can sort, search, or modify data after loading it.
+✔ Efficient Processing → Data can be quickly accessed using vector indexing.
+
+🔹 When to Use This?
+
+🔹 Loading a list of users, products, or logs from a file.
+🔹 Processing configuration settings stored in a file.
+🔹 Storing numerical or text data for statistical analysis.
+
+
+Let's take an example to get understanding
+============================================
+#include <iostream>  
+#include <vector>    // Include vector library for storing file content
+#include <fstream>   // Include file stream library for file operations
+#include <string>    // Include string library for handling text data
+
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to load data from a file into a vector
+void LoadDataFromFile(string FileName, vector<string> &vFileContent) {
+    ifstream Myfile;  // Declare input file stream object
+
+    Myfile.open(FileName, ios::in | ios::out); // Open file in both read and write mode
+
+    // Check if the file opened successfully
+    if (Myfile.is_open()) {
+        string line;
+
+        // Read the file line by line and store each line in the vector
+        while (getline(Myfile, line)) {
+            vFileContent.push_back(line);
+        }
+
+        Myfile.close(); // Close the file after reading
+    } else {
+        cout << "\nError Opening file " << endl; // Print error message if file fails to open
+    }
+}
+
+int main() {
+    vector<string> vFileContent; // Declare a vector to store file content
+
+    // Call function to load file content into the vector
+    LoadDataFromFile("Myfile.txt", vFileContent);
+
+    cout << "File content loaded into vector:" << endl;
+
+    // Loop through vector and print each stored line
+    for (string &line : vFileContent) {
+        cout << line << endl;
+    }
+
+    return 0; // Return 0 indicating successful program execution
+}
+========================================================================================================
+
+  Lesson #56 - Save Vector to File 
+====================================
+#include <iostream>   // مكتبة الإدخال والإخراج الأساسية
+#include <vector>     // مكتبة الـ vector (المصفوفات الديناميكية)
+#include <fstream>    // مكتبة التعامل مع الملفات
+#include <string>     // مكتبة التعامل مع النصوص
+
+using namespace std;
+
+// دالة لحفظ بيانات الـ vector في ملف
+void SaveVectorToFile(string FileName, vector<string> vFileContent) {
+    ofstream Myfile; // إنشاء كائن من نوع ofstream لفتح الملف في وضع الكتابة
+
+    Myfile.open(FileName, ios::out); // فتح الملف في وضع الكتابة، مما يحذف أي محتوى قديم
+    
+    // التحقق مما إذا كان الملف قد تم فتحه بنجاح
+    if (Myfile.is_open()) {
+        // حلقة لتكرار جميع عناصر الـ vector وكتابتها في الملف
+        for (string &line : vFileContent) {
+            if (!line.empty()) { // التأكد من أن السطر غير فارغ قبل الكتابة
+                Myfile << line << endl; // كتابة السطر وإضافة سطر جديد بعده
+            }
+        }
+        Myfile.close(); // إغلاق الملف بعد الانتهاء من الكتابة
+    }
+}
+
+int main() {
+    // إنشاء vector يحتوي على مجموعة أسماء
+    vector<string> vFileContent{"Ayman", "Nader", "Badr", "Zakaria"};
+
+    // استدعاء الدالة لحفظ البيانات في الملف
+    SaveVectorToFile("Myfile.txt", vFileContent); 
+
+    // طباعة رسالة تأكيد بعد حفظ البيانات
+    cout << "Data successfully saved to file." << endl;
+
+    return 0; // إنهاء البرنامج
+}
+
+
+📌 ماذا يفعل هذا الكود؟
+
+    ينشئ ملفًا جديدًا باسم "Myfile.txt" (أو يستبدل محتواه إذا كان موجودًا مسبقًا).
+
+    يكتب أسماء الأشخاص الموجودة في vector داخل الملف، كل اسم في سطر منفصل.
+
+    يعرض رسالة "Data successfully saved to file." في الكونسول عند نجاح العملية.
+========================================================================================================
+
+  Lesson #57 - Delete Record From File 
+===========================================
+
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+// Function to load data from a file into a vector
+void LoadDataFromFileTovector(string FileName, vector<string>& vFileContent) {
+    fstream Myfile;  // Create file stream object
+
+    Myfile.open(FileName, ios::in | ios::out); // Open file in read and write mode
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        string line;
+
+        // Read each line from the file and add it to the vector
+        while (getline(Myfile, line)) {
+            vFileContent.push_back(line);
+        }
+
+        Myfile.close(); // Close the file after reading
+    }
+}
+
+// Function to save the contents of a vector to a file
+void SaveVectorToFile(string FileName, vector<string> vFileContent) {
+    ofstream Myfile; // Create an output file stream object
+
+    Myfile.open(FileName, ios::out); // Open file in write mode (overwrite existing content)
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        // Write each non-empty line from the vector to the file
+        for (string &line : vFileContent) {
+            if (!line.empty()) {
+                Myfile << line << endl;
+            }
+        }
+
+        Myfile.close(); // Close the file after writing
+    }
+}
+
+// Function to delete a specific record from the file
+void DeleteRecordFromFile(string FileName, string Record) {
+    vector<string> vFileContent; // Vector to hold file content
+
+    // Load the current file data into the vector
+    LoadDataFromFileTovector(FileName, vFileContent);
+
+    // Iterate over the vector and replace the matching record with an empty string
+    for (string &line : vFileContent) {
+        if (line == Record) {
+            line = ""; // Replace the matching line with an empty string
+        }
+    }
+
+    // Save the modified vector back to the file
+    SaveVectorToFile(FileName, vFileContent);
+}
+
+// Function to print the content of a file
+void PrintFileConent(string FileName) {
+    fstream Myfile; // Create file stream object
+
+    Myfile.open(FileName, ios::out | ios::in); // Open file in read and write mode
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        string line;
+
+        // Read and print each line from the file
+        while (getline(Myfile, line)) {
+            cout << line << endl;
+        }
+
+        Myfile.close(); // Close the file after reading
+    }
+}
+
+int main() {
+    // Print file content before deletion
+    cout << "File Content Before Delete" << endl;
+    PrintFileConent("Myfile.txt");
+
+    // Delete the record "Nader" from the file
+    DeleteRecordFromFile("Myfile.txt", "Nader");
+
+    // Print file content after deletion
+    cout << "\nFile Content After Delete" << endl;
+    PrintFileConent("Myfile.txt");
+
+    return 0;
+}
+==========================================================================================================
+
+  Lesson #58 - Update Record In File 
+=======================================
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+// Function to load data from a file into a vector
+void LoadDataFromFileTovector(string FileName, vector<string>& vFileContent) {
+    fstream Myfile; // Create a file stream object
+
+    Myfile.open(FileName, ios::in | ios::out); // Open file in read and write mode
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        string line;
+
+        // Read each line from the file and add it to the vector
+        while (getline(Myfile, line)) {
+            vFileContent.push_back(line);
+        }
+
+        Myfile.close(); // Close the file after reading
+    }
+}
+
+// Function to save the contents of a vector to a file
+void SaveVectorToFile(string FileName, vector<string> vFileContent) {
+    ofstream Myfile; // Create an output file stream object
+
+    Myfile.open(FileName, ios::out); // Open file in write mode (overwrite existing content)
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        // Write each non-empty line from the vector to the file
+        for (string &line : vFileContent) {
+            if (!line.empty()) {
+                Myfile << line << endl;
+            }
+        }
+
+        Myfile.close(); // Close the file after writing
+    }
+}
+
+// Function to update a specific record in the file
+void UpdateRecordInFile(string FileName, string Record, string UpdateTo) {
+    vector<string> vFileContent; // Vector to hold file content
+
+    // Load the current file data into the vector
+    LoadDataFromFileTovector(FileName, vFileContent);
+
+    // Iterate over the vector and replace the matching record with the new value
+    for (string &line : vFileContent) {
+        if (line == Record) {
+            line = UpdateTo; // Update the record with the new value
+        }
+    }
+
+    // Save the modified vector back to the file
+    SaveVectorToFile(FileName, vFileContent);
+}
+
+// Function to print the content of a file
+void PrintFileConent(string FileName) {
+    fstream Myfile; // Create a file stream object
+
+    Myfile.open(FileName, ios::out | ios::in); // Open file in read and write mode
+
+    if (Myfile.is_open()) { // Check if the file is successfully opened
+        string line;
+
+        // Read and print each line from the file
+        while (getline(Myfile, line)) {
+            cout << line << endl;
+        }
+
+        Myfile.close(); // Close the file after reading
+    }
+}
+
+int main() {
+    // Print file content before update
+    cout << "File Content Before Update" << endl;
+    PrintFileConent("Myfile.txt");
+
+    // Update the record "Ayman" to "Ahmed" in the file
+    UpdateRecordInFile("Myfile.txt", "Ayman", "Ahmed");
+
+    // Print file content after update
+    cout << "\nFile Content After Update" << endl;
+    PrintFileConent("Myfile.txt");
+
+    return 0;
+}
+===================================================================================================
+ DateTime 
+ =================
+
+Datetime: Local/UTC Time 
+============================
+
+#include <iostream>  // For input and output operations
+#include <vector>    // For using vectors (not used in this code but included)
+#include <fstream>   // For file handling (not used in this code but included)
+#include <string>    // For string manipulations
+#include <ctime>     // For handling date and time functions
+
+using namespace std;
+
+int main() {
+    // Get the current time as a time_t object (time in seconds since 01/01/1970)
+    time_t t = time(0);
+
+    // Convert the time_t object to a readable string format
+    char* dt = ctime(&t);
+
+    // Print the local date and time
+    cout << "Local date and time is: " << dt << endl;
+
+    // Convert the time to Coordinated Universal Time (UTC/GMT)
+    tm* gmtm = gmtime(&t);
+
+    // Convert the UTC time to a string representation
+    dt = asctime(gmtm);
+
+    // Print the UTC date and time
+    cout << "UTC date and time is: " << dt << endl;
+
+    return 0; // Indicate that the program executed successfully
+}
+
+🔍 Explanation of Functions Used:
+
+    time(0)
+
+        Gets the current time in seconds since January 1, 1970 (Epoch time).
+
+    ctime(&t)
+
+        Converts the time_t object into a human-readable string representing local time.
+
+    gmtime(&t)
+
+        Converts the time_t object into a tm struct representing UTC time.
+
+    asctime(gmtm)
+
+        Converts the tm struct (UTC time) into a human-readable string.
+
+=========================================================================================================
+last lesson Datetime Structure 
+================================
+
+#include <iostream>  // For input and output operations
+#include <vector>    // Included but not used in this code
+#include <fstream>   // Included but not used in this code
+#include <string>    // Included but not used in this code
+#include <ctime>     // For handling date and time functions
+
+using namespace std;
+
+int main() {
+
+    // Get the current time as a time_t object (time in seconds since 01/01/1970)
+    time_t t = time(0);
+
+    // Convert the time_t object to a tm struct representing local time
+    tm* now = localtime(&t);
+
+    // Extract and print individual components of the local time
+    cout << "Year: " << now->tm_year + 1900 << endl;  // tm_year gives years since 1900, so add 1900
+    cout << "Month: " << now->tm_mon + 1 << endl;     // tm_mon is zero-based (0 = January, 11 = December), so add 1
+    cout << "Day: " << now->tm_mday << endl;          // Day of the month
+    cout << "Hour: " << now->tm_hour << endl;         // Current hour (0-23)
+    cout << "Minute: " << now->tm_min << endl;        // Current minute (0-59)
+    cout << "Second: " << now->tm_sec << endl;        // Current second (0-59)
+
+    // Additional information about the date
+    cout << "Week Day (Days since Sunday): " << now->tm_wday << endl;  // 0 = Sunday, 6 = Saturday
+    cout << "Year Day (Days since Jan 1st): " << now->tm_yday << endl; // 0 = Jan 1st, 365 or 366 for Dec 31st (leap year)
+
+    // Daylight saving time flag (1 if DST is in effect, 0 if not, -1 if unknown)
+    cout << "Daylight Saving Time (DST): " << now->tm_isdst << endl;
+
+    return 0;  // Program executed successfully
+}
+
+🔍 Explanation of tm Structure Fields Used:
+Field	Meaning	Range
+tm_year	Years since 1900	2025 - 1900 (i.e., 125 for 2025)
+tm_mon	Month of the year (0 = Jan, 11 = Dec)	0 - 11
+tm_mday	Day of the month	1 - 31
+tm_hour	Hours (24-hour format)	0 - 23
+tm_min	Minutes	0 - 59
+tm_sec	Seconds	0 - 59
+tm_wday	Day of the week (0 = Sunday, 6 = Saturday)	0 - 6
+tm_yday	Day of the year (0 = Jan 1st, 365 for Dec 31)	0 - 365
+tm_isdst	Daylight savings time flag (-1 = unknown, 0 = no, 1 = yes)	-1, 0, 1
+
+============================That's It :)=========================================================
