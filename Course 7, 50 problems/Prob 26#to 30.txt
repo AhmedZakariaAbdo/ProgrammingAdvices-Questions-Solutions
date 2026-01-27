@@ -1,0 +1,342 @@
+Problem 26#
+Upper/Lower All Letters of string 
+===================================
+Description:
+Write A Program To Read a string then upper all letters, then lower all letters, and print them
+=========================================================================================
+My Solution:
+==============
+#include <iostream>   // For input/output operations
+#include <iomanip>    // For formatted output (not used in this code)
+#include <vector>     // For using vectors (not used in this code)
+#include <fstream>    // For file handling (not used in this code)
+#include <string>     // For string operations
+#include <ctime>      // For seeding the random number generator
+//#include "MyLib.h"  // Custom library (commented out)
+//using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of input from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);  // Read the whole line including spaces
+    return Word;
+}
+
+// Function to convert all characters in a string to uppercase
+string ConvertAllstringToUpper(string Word) {
+    for (short i = 0; i < Word.length(); i++) {
+        Word[i] = toupper(Word[i]);  // Convert each character to uppercase
+    }
+    return Word;
+}
+
+// Function to convert all characters in a string to lowercase
+string ConvertAllstringToLower(string Word) {
+    for (short i = 0; i < Word.length(); i++) {
+        Word[i] = tolower(Word[i]);  // Convert each character to lowercase
+    }
+    return Word;
+}
+
+// Function to print a string character by character
+void PrintString(string Word) {
+    for (short i = 0; i < Word.length(); i++) {
+        cout << Word[i];  // Print each character
+    }
+    cout << endl;
+}
+
+// Main function
+int main() {
+    srand((unsigned)time(NULL));  // Seed the random number generator (not used in this program)
+
+    string Word = ReadString();  // Get string input from user
+
+    // Print the string after converting to uppercase
+    cout << "\nString After Upper: ";
+    PrintString(ConvertAllstringToUpper(Word));
+
+    // Print the string after converting to lowercase
+    cout << "\nString After Lower: ";
+    PrintString(ConvertAllstringToLower(Word));
+
+    return 0;
+}
+====================================================================================================
+Problem 27#
+Invert character Case
+===================================
+Description:
+Write A Program To Read a character then invert it's case and print it
+=========================================================================================
+My Solution:
+==============
+#include <iostream>     // For standard input and output
+#include <iomanip>      // For formatted output (not used here, but included)
+#include <vector>       // For using vectors (not used here)
+#include <fstream>      // For file handling (not used here)
+#include <string>       // For using strings (not used here)
+#include <ctime>        // For time-related functions (used for srand)
+
+// using namespace MyLib; // Custom library (commented out)
+using namespace std;
+
+// Function to read a single character from the user
+char ReadCharacter(){
+    char C;
+
+    cout << "Please Enter Character: ";
+    cin >> C;
+
+    return C; // Return the entered character
+}
+
+// Function to invert the case of a character
+char InvertCharacterCase(char C){
+    // If the character is uppercase, convert to lowercase
+    if(isupper(C)){
+        C = tolower(C);
+    }
+    // If the character is lowercase, convert to uppercase
+    else if(islower(C)){
+        C = toupper(C);
+    }
+
+    return C; // Return the case-inverted character
+}
+
+int main(){
+
+    // Seed the random number generator (not needed here, but included)
+    srand((unsigned)time(NULL));
+
+    // Read a character from the user
+    char Character = ReadCharacter();
+
+    // Output the character after inverting its case
+    cout << "\nChar After Inverting Case: ";
+    cout << InvertCharacterCase(Character) << endl;
+
+    return 0;
+}
+====================================================================================================
+Problem 28#
+Invert All Letters Case
+===================================
+Description:
+Write A Program To Read a string then invert all it's letters cas and print it
+=========================================================================================
+My Solution:
+==============
+
+#include <iostream>     // For input and output operations
+#include <iomanip>      // For formatted output (not used in this code)
+#include <vector>       // For using vectors (not used in this code)
+#include <fstream>      // For file handling (not used in this code)
+#include <string>       // For using string type
+#include <ctime>        // For time-related functions like time()
+using namespace std;
+
+// Function to read a full line string from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);  // Read the entire line including spaces
+    return Word;
+}
+
+// Function to invert the case of a single character
+char InvertCharacterCase(char C) {
+    return isupper(C) ? tolower(C) : toupper(C); // If upper -> lower, else -> upper
+}
+
+// Function to invert the case of all lowercase letters in a string
+string InvertAllLettersCase(string Word) {
+    for (short i = 0; i < Word.length(); i++) {
+        if (islower(Word[i])) {
+            Word[i] = InvertCharacterCase(Word[i]); // Invert only if lowercase
+        }
+    }
+    return Word;
+}
+
+// Function to print the string character by character
+void PrintString(string Word) {
+    for (short i = 0; i < Word.length(); i++) {
+        cout << Word[i];
+    }
+    cout << "\n" << endl;
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed for randomness (not needed here)
+
+    string Word = ReadString(); // Get input from user
+
+    cout << "\nString After Inverting All letters Case: ";
+    PrintString(InvertAllLettersCase(Word)); // Print result after inverting lowercase letters only
+
+    return 0;
+}
+====================================================================================================
+Problem 29#
+Count small/Capital Letters
+===================================
+Description:
+Write A Program To Read a string then count small / capital letters in that string
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+// Function to read a string from the user input
+string ReadString(){
+    string Word;
+    cout << "Please Enter Your String: "; // Prompt the user to enter a string
+    getline(cin, Word); // Read the entire line of input into 'Word'
+    return Word; // Return the string
+}
+
+// Function to get the length of the string excluding spaces
+int GetLengthOfString(string Word){
+    int count = 0;
+    // Loop through each character of the string
+    for(short i = 0; i < Word.length(); i++){
+        if(Word[i] != ' '){ // Check if the character is not a space
+            count++; // Increment count for non-space characters
+        }
+    }
+    return count; // Return the total count of non-space characters
+}
+
+// Function to count the number of small (lowercase) letters in the string
+int CountSmallLettersInString(string Word){
+    int count = 0;
+    // Loop through each character of the string
+    for(short i = 0; i < Word.length(); i++){
+        if(islower(Word[i])){ // Check if the character is a lowercase letter
+            count++; // Increment count for lowercase letters
+        }
+    }
+    return count; // Return the total count of lowercase letters
+}
+
+// Function to count the number of capital (uppercase) letters in the string
+int CountCapitallLettersInString(string Word){
+    int count = 0;
+    // Loop through each character of the string
+    for(short i = 0; i < Word.length(); i++){
+        if(isupper(Word[i])){ // Check if the character is an uppercase letter
+            count++; // Increment count for uppercase letters
+        }
+    }
+    return count; // Return the total count of uppercase letters
+}
+
+int main(){
+    srand((unsigned)time(NULL)); // Seed the random number generator (not used in this code)
+
+    string Word = ReadString(); // Call the function to read the string from the user
+
+    // Output the length of the string excluding spaces
+    cout << "\nString Length: ";
+    cout << GetLengthOfString(Word) << endl;
+
+    // Output the count of lowercase letters in the string
+    cout << "\nSmall Letters Count = " << CountSmallLettersInString(Word) << endl;
+
+    // Output the count of uppercase letters in the string
+    cout << "\nCapital Letters Count = " << CountCapitallLettersInString(Word) << endl;
+
+    return 0; // Return 0 to indicate successful execution
+}
+
+Explanation of Comments:
+
+    ReadString(): This function prompts the user to enter a string and returns the string.
+
+    GetLengthOfString(): This function counts the number of non-space characters in the input string and returns the result.
+
+    CountSmallLettersInString(): This function counts the number of lowercase (small) letters in the input string.
+
+    CountCapitallLettersInString(): This function counts the number of uppercase (capital) letters in the input string.
+
+    main(): In the main function, the program reads a string, then prints out the length of the string (excluding spaces), the number of lowercase letters, and the number of uppercase letters.
+
+This code is well-organized, and the comments should help anyone reading the code understand its purpose and functionality clearly.
+
+
+====================================================================================================
+Problem 30#
+Count Letters
+===================================
+Description:
+Write A Program To Read a string and read a Character then count the character in that string
+=========================================================================================
+My Solution:
+==============
+
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of text from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word); // Reads the full line including spaces
+    return Word;
+}
+
+// Function to read a single character from the user
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C; // Reads a single character
+    return C;
+}
+
+// Function to count how many times a specific character appears in the string
+int CountSpecificLetterInString(string Word, char C) {
+    short count = 0;
+
+    // Loop through each character in the string
+    for (short i = 0; i < Word.length(); i++) {
+        if (Word[i] == C) {
+            count++; // Increment count if character matches
+        }
+    }
+
+    return count; // Return the total count
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed random (not used here, but safe to leave)
+
+    string Word = ReadString();   // Read the full string from user
+    char C = ReadCharacter();     // Read the character to search for
+
+    // Display the result of how many times the character appears
+    cout << "\nLetter '" << C << "' Count = " << CountSpecificLetterInString(Word, C) << endl;
+
+    return 0;
+}
+====================================================================================================
+That's itt

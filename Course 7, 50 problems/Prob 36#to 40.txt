@@ -1,0 +1,368 @@
+Problem 36#
+Count Each Word In String
+===================================
+Description:
+Write A Program To Read a string then count each word in that string
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of text from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a single character from the user
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to count the number of words in a given string
+short CountEachWordInString(string Word) {
+    string delim = " ";  // Delimiter used to split words
+    short Pos = 0;
+    short count = 0;
+    string sWord;
+
+    // Loop through the string and count each word separated by space
+    while ((Pos = Word.find(delim)) != std::string::npos) {
+        sWord = Word.substr(0, Pos);  // Extract substring up to the space
+        if (sWord != "") {
+            count++;  // Increment count if it's a valid word (not empty)
+        }
+        Word.erase(0, Pos + delim.length());  // Remove the counted word
+    }
+
+    // Count the last word if it's not empty
+    if (Word != "") {
+        count++;
+    }
+
+    return count;
+}
+
+int main() {
+    srand((unsigned)time(NULL));  // Seed random number generator (not used here, but included)
+
+    string Word = ReadString();  // Read the input string
+
+    cout << "\nThe Number Of Words in your string is: ";
+    cout << CountEachWordInString(Word) << endl;  // Print the number of words
+
+    return 0;
+}
+=========================================================================================
+Problem 37#
+Split String
+===================================
+Description:
+Write A Program To Read a string then Make A function to split each word in vector
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full string (including spaces) from user input
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a single character from user input
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to split a string based on a given delimiter and return a vector of tokens
+vector<string> SplitString(string s1, string Delim) {
+    vector<string> Vstring;   // Vector to store the split words
+    short pos = 0;
+    string sWord;
+
+    // Loop to find delimiter and extract tokens
+    while ((pos = s1.find(Delim)) != std::string::npos) {
+        sWord = s1.substr(0, pos); // Extract substring before the delimiter
+
+        if (sWord != "") {
+            Vstring.push_back(sWord); // Add non-empty word to vector
+        }
+
+        s1.erase(0, pos + Delim.length()); // Remove the processed part of the string
+    }
+
+    // Add the last part of the string if it's not empty
+    if (s1 != "") {
+        Vstring.push_back(s1);
+    }
+
+    return Vstring;
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator (not used here)
+
+    vector<string> vstring;
+
+    // Read a string from the user and split it by spaces
+    vstring = SplitString(ReadString(), " ");
+
+    // Output the number of tokens found
+    cout << "\nTokens = " << vstring.size() << endl;
+
+    // Print each token on a separate line
+    for (string &s : vstring) {
+        cout << s << endl;
+    }
+
+    return 0;
+}
+=========================================================================================
+Problem 38#
+TrimLeft, TrimRight, Trim
+===================================
+Description:
+Write A Program To Read a string then trimleft,right, all
+=========================================================================================
+My Solution:
+==============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full string (including spaces) from user input
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a single character from user input
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to trim leading spaces from a string
+string TrimLeft(string S1) {
+    for (short i = 0; i < S1.length(); i++) {
+        if (S1[i] != ' ') {
+            // Return substring starting from the first non-space character
+            return S1.substr(i, S1.length() - i);
+        }
+    }
+    return ""; // If string contains only spaces
+}
+
+// Function to trim trailing spaces from a string
+string TrimRight(string S1) {
+    for (short i = S1.length() - 1; i >= 0; i--) {
+        if (S1[i] != ' ') {
+            // Return substring from beginning up to the last non-space character
+            return S1.substr(0, i + 1);
+        }
+    }
+    return ""; // If string contains only spaces
+}
+
+// Function to trim both leading and trailing spaces
+string Trim(string S1) {
+    return (TrimLeft(TrimRight(S1)));
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator (not used here)
+
+    // Example string with leading and trailing spaces
+    string S1 = "  Ahmed Zakaria     ";
+    
+    // Print original and trimmed versions of the string
+    cout << "\nString = " << S1 << endl;
+    cout << "\nTrimLeft = " << TrimLeft(S1) << endl;
+    cout << "\nTrimRight = " << TrimRight(S1) << endl;
+    cout << "\nTrim = " << Trim(S1) << endl;
+
+    return 0;
+}
+=========================================================================================
+Problem 39#
+Join String
+===================================
+Description:
+Write A Program To join vector of strings into a one string with separators
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full string (with spaces) from user input
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a single character from user input
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to join a vector of strings into a single string, separated by a delimiter
+string JoinString(vector<string> vString, string Delim) {
+    string s1;
+
+    // Loop through each string in the vector and append it with the delimiter
+    for (string& s : vString) {
+        s1 = s1 + s + Delim;
+    }
+
+    // Remove the last delimiter from the result before returning
+    return s1.substr(0, s1.length() - Delim.length());
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator (not used here)
+
+    // Create a vector of strings
+    vector<string> vString = {"Ahmed", "Ali", "Zakaria"};
+
+    // Output the joined string using a space as delimiter
+    cout << "\nVector After join: \n";
+    cout << JoinString(vString, " ");
+
+    return 0;
+}
+=========================================================================================
+Problem 40#
+Join String(overloading)
+===================================
+Description:
+Write A Program To join Array of strings into a one string with separators
+=========================================================================================
+My Solution:
+==============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+
+using namespace std;
+
+// Function to read a full string (with spaces) from user input
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a single character from user input
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to join a vector of strings using a delimiter
+string JoinString(vector<string> vString, string Delim) {
+    string s1;
+
+    // Concatenate each element followed by the delimiter
+    for (string& s : vString) {
+        s1 = s1 + s + Delim;
+    }
+
+    // Remove the last extra delimiter before returning the result
+    return s1.substr(0, s1.length() - Delim.length());
+}
+
+// Overloaded function to join an array of strings using a delimiter
+string JoinString(string arrString[], short length, string Delim) {
+    string s1 = "";
+
+    // Concatenate each element followed by the delimiter
+    for (short i = 0; i < length; i++) {
+        s1 = s1 + arrString[i] + Delim;
+    }
+
+    // Remove the last extra delimiter before returning the result
+    return s1.substr(0, s1.length() - Delim.length());
+}
+
+int main() {
+    // Seed for random generator (not used in this example)
+    srand((unsigned)time(NULL));
+
+    // Vector of strings
+    vector<string> vString = {"Ahmed", "Ali", "Zakaria"};
+
+    // Array of strings
+    string arrstring[] = {"Mohammed", "Zakaria", "Mamdouh"};
+
+    // Output the joined vector string
+    cout << "\nVector After join: \n";
+    cout << JoinString(vString, " ");
+
+    // Output the joined array string
+    cout << "\n\nArray After Join: \n";
+    cout << JoinString(arrstring, 3, " ");
+
+    return 0;
+}
+=============================================================================================
+That's ittt

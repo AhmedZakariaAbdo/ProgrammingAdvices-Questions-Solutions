@@ -1,0 +1,402 @@
+Problem 31#
+Count Latter Match Case
+===================================
+Description:
+Write A Program To Read a string and read a character then count the character in that string 
+(match casae or not)
+=========================================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+ 
+    string ReadString(){
+
+        string Word;
+
+        cout<<"Please Enter Your String: ";
+        getline(cin,Word);
+
+        return Word;
+    }
+
+
+    char ReadCharacter(){
+
+        char C;
+
+        cout<<"Please Enter Character: ";
+        cin>> C;
+
+        return C;
+    }
+
+
+    int CountSpecificLetterInString(string Word,char C, bool MatchCase = true){
+
+        short count = 0;
+
+        for (short i = 0; i < Word.length(); i ++){
+
+            if(MatchCase){
+                
+                if(Word[i] == C)
+                count ++;
+
+            }else{
+                
+                if(tolower(Word[i]) == tolower(C))
+                    count++;
+            }
+        }
+
+        return count;
+    }
+
+    char InvertCharacterCase(char C){
+
+        return isupper(C) ? tolower(C) : toupper(C);
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        string Word = ReadString();
+        char C = ReadCharacter();
+
+        cout<<"\nLetter \'"<< C<<"\' Count = "<<CountSpecificLetterInString(Word,C);
+        cout<<"\nLetter \'"<<C<<"\' ";
+        cout<<"Or \'"<<InvertCharacterCase(C)<<"\' ";
+        cout<<" Count = "<<CountSpecificLetterInString(Word,C, false)<<endl;
+
+    return 0;
+}
+================================================================================================
+Problem 31#
+Is Vowel?
+===================================
+Description:
+Write A Program To Read a Character then check if it's a Vowel or Not (Voles Are: a,e,i,o,u)
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a string input from the user (not used in this code)
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);
+    return Word;
+}
+
+// Function to read a character from the user
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to check if the character is a vowel (a, e, i, o, u)
+bool IsVowels(char C) {
+    C = tolower(C);  // Convert character to lowercase to simplify comparison
+    return ((C == 'a') || (C == 'e') || (C == 'i') || (C == 'o') || (C == 'u'));
+}
+
+int main() {
+    srand((unsigned)time(NULL));  // Seed the random number generator (not used here)
+
+    // Read a character from the user
+    char C = ReadCharacter();
+
+    // Check if the character is a vowel and print the result
+    if (IsVowels(C)) {
+        cout << "\nYes Letter \'" << C << "\' Is Vowel" << endl;
+    } else {
+        cout << "\nNo Letter \'" << C << "\' Is Not Vowel" << endl;
+    }
+
+    return 0;
+}
+================================================================================================
+Problem 32#
+Count Vowels
+===================================
+Description:
+Write A Program To Read a Character then count all Vowels in that string (Vowels Are: a,e,i,o,u)
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of text (string) from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);  // Read the entire line including spaces
+    return Word;
+}
+
+// Function to read a single character from the user (not used in this code)
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to check if a given character is a vowel (a, e, i, o, u)
+bool IsVowels(char C) {
+    C = tolower(C);  // Convert the character to lowercase for comparison
+    return ((C == 'a') || (C == 'e') || (C == 'i') || (C == 'o') || (C == 'u'));
+}
+
+// Function to count how many vowels are in a given string
+int CountVowelsLettersInString(string Word) {
+    short Count = 0;
+    for (short i = 0; i < Word.length(); i++) {
+        if (IsVowels(Word[i])) {
+            Count++;  // Increment the counter if the character is a vowel
+        }
+    }
+    return Count;
+}
+
+int main() {
+    srand((unsigned)time(NULL));  // Seed the random number generator (not used here)
+
+    // Read a string from the user
+    string Word = ReadString();
+
+    // Output the number of vowels in the string
+    cout << "\nNumber Of Vowels Number Is: " << CountVowelsLettersInString(Word) << endl;
+
+    return 0;
+}
+================================================================================================
+Problem 33#
+Count Vowels
+===================================
+Description:
+Write A Program To Read a Character then count all Vowels in that string (Vowels Are: a,e,i,o,u)
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of text (string) from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word);  // Read the entire line including spaces
+    return Word;
+}
+
+// Function to read a single character from the user (not used in this code)
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to check if a given character is a vowel (a, e, i, o, u)
+bool IsVowels(char C) {
+    C = tolower(C);  // Convert the character to lowercase for comparison
+    return ((C == 'a') || (C == 'e') || (C == 'i') || (C == 'o') || (C == 'u'));
+}
+
+// Function to count how many vowels are in a given string
+int CountVowelsLettersInString(string Word) {
+    short Count = 0;
+    for (short i = 0; i < Word.length(); i++) {
+        if (IsVowels(Word[i])) {
+            Count++;  // Increment the counter if the character is a vowel
+        }
+    }
+    return Count;
+}
+
+int main() {
+    srand((unsigned)time(NULL));  // Seed the random number generator (not used here)
+
+    // Read a string from the user
+    string Word = ReadString();
+
+    // Output the number of vowels in the string
+    cout << "\nNumber Of Vowels Number Is: " << CountVowelsLettersInString(Word) << endl;
+
+    return 0;
+}
+================================================================================================
+Problem 34#
+Print All Vowels In The String
+===================================
+Description:
+Write A Program To Read a string then print all Vowels in that string (Vowels Are: a,e,i,o,u)
+=========================================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of text from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word); // Read the entire input line including spaces
+    return Word;
+}
+
+// Function to read a single character from the user
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to check whether the given character is a vowel
+bool IsVowels(char C) {
+    C = tolower(C); // Convert character to lowercase for consistent comparison
+    return ((C == 'a') || (C == 'e') || (C == 'i') || (C == 'o') || (C == 'u'));
+}
+
+// Function to print all vowel characters found in the input string
+void PrintAllVowelsLettersInString(string Word) {
+        
+    cout << "\nVowels In String Are: ";
+
+    for (short i = 0; i < Word.length(); i++) {
+        if (IsVowels(Word[i])) {
+            cout << Word[i] << " "; // Print vowel followed by a space
+        }
+    }
+    cout << endl; // Move to next line after printing all vowels
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed for random generator (not used here)
+
+    string Word = ReadString(); // Get string input from user
+
+    PrintAllVowelsLettersInString(Word); // Print vowels found in the string
+
+    return 0;
+}
+================================================================================================
+Problem 35#
+Print Each Word in String
+===================================
+Description:
+Write A Program To Read a string then print each Word in that string 
+=========================================================================================
+My Solution:
+==============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full string (line) from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word); // Reads a full line including spaces
+    return Word;
+}
+
+// Function to read a single character from the user
+char ReadCharacter() {
+    char C;
+    cout << "Please Enter Character: ";
+    cin >> C;
+    return C;
+}
+
+// Function to split and print each word in the input string
+void PrintEachWordInString(string Word) {
+
+    string delim = " "; // Delimiter used to split words (space)
+    cout << "\nYour String Words Are: " << endl;
+
+    short Pos = 0;
+    string sWord;
+
+    // Loop until no more delimiter is found
+    while ((Pos = Word.find(delim)) != std::string::npos) {
+
+        sWord = Word.substr(0, Pos); // Extract the word before the space
+
+        if (sWord != "") {
+            cout << sWord << endl; // Print the word if it's not empty
+        }
+
+        Word.erase(0, Pos + delim.length()); // Remove the printed word and the space
+    }
+
+    // Print the last word if it's not empty
+    if (Word != "") {
+        cout << Word << endl;
+    }
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator (not used in this program)
+
+    string Word = ReadString(); // Get string input from user
+
+    PrintEachWordInString(Word); // Print each word in the string
+
+    return 0;
+}
+================================================================================================
+That's it

@@ -1,0 +1,349 @@
+Problem 21#
+Fibonacci Series
+===================================
+Description:
+Write A Program To print Fibonacci Series
+==============================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to generate a random number between From and To
+int RandomNumber(int From, int To){
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+// Function to fill a 3x3 matrix with random numbers (0 or 1)
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+    for(short i = 0; i < Cols; i++){
+        for(short j = 0; j < Rows; j++){
+            Arr[i][j] = RandomNumber(0, 1);
+        }
+    }
+}
+
+// Function to print the contents of a 3x3 matrix
+void PrintMatrix(int arr[3][3], int Rows, int cols){
+    for(short i = 0; i < cols; i++){
+        for(short j = 0; j < Rows; j++){
+            printf(" %0*d   ", 2, arr[i][j]); // prints number with 2-digit width, padded with zeros if needed
+            // cout<<setw(3)<< arr[i][j]<<"    "; // alternative using iomanip
+        }
+        cout << endl;
+    }
+}
+
+// Function to print Fibonacci series using a loop
+void PrintFibonacciusingLoop(short Number){
+    int FebNumber = 0;
+    int Prev2 = 0, Prev1 = 1;
+
+    cout << "1  "; // first Fibonacci number is already known
+
+    for(short i = 2; i <= Number; i++){
+        FebNumber = Prev1 + Prev2; // Fibonacci formula
+        cout << FebNumber << "   ";
+        Prev2 = Prev1;             // shift values for next iteration
+        Prev1 = FebNumber;
+    }
+}
+
+int main(){
+    srand((unsigned)time(NULL)); // seed the random number generator
+
+    PrintFibonacciusingLoop(10); // print first 10 Fibonacci numbers
+    return 0;
+}
+=========================================================================================================
+Problem 22#
+Fibonacci Series with recursion
+===================================
+Description:
+Write A Program To print Fibonacci Series with recursion
+==============================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to generate a random number between 'From' and 'To' (inclusive)
+int RandomNumber(int From, int To){
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+// Function to fill a 3x3 matrix with random 0s and 1s
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+    for(short i = 0; i < Cols; i++){
+        for(short j = 0; j < Rows; j++){
+            Arr[i][j] = RandomNumber(0, 1);
+        }
+    }
+}
+
+// Function to print the elements of a 3x3 matrix
+void PrintMatrix(int arr[3][3], int Rows, int cols){
+    for(short i = 0; i < cols; i++){
+        for(short j = 0; j < Rows; j++){
+            // Print each element in a 2-digit width format
+            printf(" %0*d   ", 2, arr[i][j]);
+            // Alternative with iomanip:
+            // cout << setw(3) << arr[i][j] << "    ";
+        }
+        cout << endl;
+    }
+}
+
+// Recursive function to print Fibonacci series
+void PrintFibonacciusingRecursion(short Number, int Prev1, int Prev2){
+    int FebNumber = 0;
+
+    // Base case: stop when Number reaches 0
+    if (Number > 0){
+        FebNumber = Prev1 + Prev2;
+        Prev2 = Prev1;
+        Prev1 = FebNumber;
+
+        cout << FebNumber << "    ";
+
+        // Recursive call with updated values
+        PrintFibonacciusingRecursion(Number - 1, Prev1, Prev2);
+    }
+}
+
+int main(){
+    // Initialize random seed based on current time
+    srand((unsigned)time(NULL));
+
+    // Call recursive Fibonacci function to print 10 numbers
+    PrintFibonacciusingRecursion(10, 0, 1);
+
+    return 0;
+}
+=========================================================================================================
+Problem 23#
+Print First Letter of Each word
+===================================
+Description:
+Write A Program To Read a string then print the first letter of each word in that string
+==============================================================================
+My Solution:
+==============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line of input from the user
+string ReadString() {
+    string Word;
+    cout << "Please Enter Your String: ";
+    getline(cin, Word); // Reads the entire input line including spaces
+    return Word;
+}
+
+// Function to print the first letter of each word in the given string
+void PrintEachLetterofEeachWord(string Word) {
+    bool IsfirstLetter = true; // Flag to detect the first letter of a word
+
+    // Loop through each character in the string
+    for (short i = 0; i < Word.length(); i++) {
+
+        // If current character is not a space and it's the first letter of a word
+        if (Word[i] != ' ' && IsfirstLetter) {
+            cout << Word[i] << endl; // Print the first letter
+        }
+
+        // Update flag based on whether current character is a space
+        IsfirstLetter = (Word[i] == ' ' ? true : false);
+    }
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Initialize random seed (not needed here, but okay to leave)
+
+    // Call function to print first letter of each word from user input
+    PrintEachLetterofEeachWord(ReadString());
+
+    return 0;
+}
+=========================================================================================================
+Problem 24#
+Print Upper First Letter of Each word
+===================================
+Description:
+Write A Program To Read a string then Uppercase the first letter of each word in that string
+==============================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to read a full line string from the user
+string ReadString() {
+    string Word;
+
+    cout << "Please Enter Your String: ";
+    getline(cin, Word); // Read the full line including spaces
+
+    return Word;
+}
+
+// Function to print the first letter of each word in the string
+void PrintEachLetterofEeachWord(string Word) {
+    bool IsfirstLetter = true; // Flag to track the beginning of a word
+
+    for (short i = 0; i < Word.length(); i++) {
+
+        if (Word[i] != ' ' && IsfirstLetter) {
+            // If current character is not a space and it's the start of a word
+            cout << Word[i] << endl;
+        }
+
+        // Update the flag depending on whether the current character is space
+        IsfirstLetter = (Word[i] == ' ' ? true : false);
+    }
+}
+
+// Function to convert the first letter of each word in the string to uppercase
+string UpperFirstLetterOfEachword(string Word) {
+    bool IsFirstLetter = true;
+
+    for (short i = 0; i < Word.length(); i++) {
+
+        if (Word[i] != ' ' && IsFirstLetter) {
+            // Convert to uppercase if it's the first letter of a word
+            Word[i] = toupper(Word[i]);
+        }
+
+        // Update the flag depending on whether the current character is space
+        IsFirstLetter = (Word[i] == ' ' ? true : false);
+    }
+
+    return Word;
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Initialize random seed (not used here, but okay)
+
+    string Word = ReadString(); // Get user input
+
+    cout << "\nSentence After Conversion: " << endl;
+
+    Word = UpperFirstLetterOfEachword(Word); // Capitalize first letter of each word
+
+    cout << Word << endl; // Output the final string
+    
+    return 0;
+}
+=========================================================================================================
+Problem 25#
+Lower First letter of each word 
+===================================
+Description:
+Write A Program To Read a string then lowercase the first letter of each word in that string
+=========================================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+    string ReadString(){
+
+        string Word;
+
+        cout<<"Please Enter Your String: ";
+        getline(cin,Word);
+
+        return Word;
+    }
+
+    void PrintEachLetterofEeachWord(string Word){
+
+
+        bool IsfirstLetter = true;
+
+        for(short i = 0; i < Word.length(); i++){
+
+            
+            if(Word[i] != ' ' && IsfirstLetter){
+
+                cout<<Word[i]<<endl;
+            }
+
+            IsfirstLetter = (Word[i] == ' ' ? true : false);
+        }
+    }
+
+    string LowerFirstLetterOfEachword(string Word){
+
+        bool IsFirstLetter = true;
+
+        for(short i = 0; i < Word.length(); i ++){
+
+            if(Word[i] != ' ' && IsFirstLetter){
+
+                Word[i] = tolower(Word[i]);
+            }
+            
+            IsFirstLetter = (Word[i] == ' ' ? true : false);
+
+        }
+
+        return Word;
+
+    }
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        string Word = ReadString();
+
+        cout<<"\nSentence After Conversion: "<<endl;
+        
+        Word = LowerFirstLetterOfEachword(Word);
+
+        cout<< Word<<endl;
+
+    return 0;
+}
+=================================================================================================
+That's it

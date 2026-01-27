@@ -1,0 +1,592 @@
+Problem 11#
+Check Matrices Equality
+===================================
+Description:
+Write A Program To Compare two Matrices and check if they are equal or not
+==============================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(1,9);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+    int SumMatrixElements(int Matrix1[3][3] , int Rows, int Cols){
+
+        int Sum = 0;
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j ++){
+
+                Sum += Matrix1[i][j];
+            }
+        }
+        
+        return Sum;
+    }
+
+
+    bool CheckMatricesEquatlity(int Matrix1[3][3],int Matrix2[3][3]){
+
+          return (SumMatrixElements(Matrix1,3,3) == SumMatrixElements(Matrix2,3,3));
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3],Matrix2[3][3];
+
+        FillMatrixWithRandomNumbers(Matrix1,3,3);
+        
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+
+        FillMatrixWithRandomNumbers(Matrix2,3,3);
+
+        cout<<"\nMatrix 2: "<<endl;
+        PrintMatrix(Matrix2,3,3);
+        
+        cout<<"\n------------------"<<endl;
+
+        if(CheckMatricesEquatlity(Matrix1,Matrix2) == true){
+            cout<<"Yes: Matrices Are Equal."<<endl;
+        }else{
+                cout<<"No: Matrices Are Not Equal."<<endl;
+        }
+
+        
+
+    return 0;
+    }
+=========================================================================================
+Professional Solution:
+=======================
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(1,10);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+    int SumMatrixElements(int Matrix1[3][3] , int Rows, int Cols){
+
+        int Sum = 0;
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j ++){
+
+                Sum += Matrix1[i][j];
+            }
+        }
+        
+        return Sum;
+    }
+
+
+    bool CheckMatricesEquatlity(int Matrix1[3][3],int Matrix2[3][3],short Rows,short Cols){
+
+          return (SumMatrixElements(Matrix1,Rows,Cols) == SumMatrixElements(Matrix2,Rows,Cols));
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3],Matrix2[3][3];
+
+        FillMatrixWithRandomNumbers(Matrix1,3,3);
+        
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+
+        FillMatrixWithRandomNumbers(Matrix2,3,3);
+
+        cout<<"\nMatrix 2: "<<endl;
+        PrintMatrix(Matrix2,3,3);
+        
+        cout<<"\n------------------"<<endl;
+
+        if(CheckMatricesEquatlity(Matrix1,Matrix2,3,3) == true){
+            cout<<"Yes: Matrices Are Equal."<<endl;
+        }else{
+                cout<<"No: Matrices Are Not Equal."<<endl;
+        }
+
+        
+
+    return 0;
+    }
+=============================================================================================
+Problem 12#
+Check Typical Matrices
+===================================
+Description:
+Write A Program To Comare Two Matrices And Check if they are Typical or not
+==============================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(1,10);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+    bool CheckMatricesTypical(int Matrix1[3][3],int Matrix2[3][3] ,int Rows, int Cols){
+       
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j ++){
+
+                if(Matrix1[i][j] != Matrix2[i][j]){
+                    
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3],Matrix2[3][3];
+
+        FillMatrixWithRandomNumbers(Matrix1,3,3);
+        
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+
+        FillMatrixWithRandomNumbers(Matrix2,3,3);
+
+        cout<<"\nMatrix 2: "<<endl;
+        PrintMatrix(Matrix2,3,3);
+        
+        cout<<"\n------------------"<<endl;
+        
+        if(CheckMatricesTypical(Matrix1,Matrix2,3,3)){
+            cout<<"Yes: Matrices Are Typical"<<endl;
+
+        }else {
+            cout<<"No: Matrices Are Not Typical"<<endl;
+        }
+        
+
+    return 0;
+    }
+====================================================================================================
+Problem 13#
+Check Identity Matrix
+===================================
+Description:
+Write A Program to check if the matrix is Identity or not
+==============================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+bool CheckIdentityMatrix(int Matrix1[3][3], int Rows, int Cols){
+    
+    for(short i = 0; i < Rows; i++){
+
+        for(short j = 0; j < Cols; j++){
+
+            // If the element is on the main diagonal, it must be 1
+
+            if(i == j && Matrix1[i][j] != 1){
+                return false;
+            }
+            // If the element is NOT on the main diagonal, it must be 0
+            else if(i != j && Matrix1[i][j] != 0){
+                return false;
+            }
+        }
+    }
+    // If all conditions are satisfied => Matrix is Identity
+    return true;
+}
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+        
+        if(CheckIdentityMatrix(Matrix1,3,3)){
+            cout<<"Yes: The Matrix is Identity"<<endl;
+
+        }else {
+            cout<<"No: The Matrix is Not Identity"<<endl;
+        }
+        
+
+    return 0;
+    }
+==================================================================================================
+Problem 14#
+Check Scalar Matrix
+===================================
+Description:
+Write a Program to check if the matrix scalar or not
+==============================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+bool IsScalarMatrix(int Matrix1[3][3], int Rows, int Cols){
+    
+    int FirstElement = Matrix1[0][0];
+
+
+    for(short i = 0; i < Rows; i++){
+
+        for(short j = 0; j < Cols; j++){
+
+            // If the element is on the main diagonal, it must be 1
+
+            if(i == j && Matrix1[i][j] != FirstElement){
+                return false;
+            }
+            // If the element is NOT on the main diagonal, it must be 0
+            else if(i != j && Matrix1[i][j] != 0){
+                return false;
+            }
+        }
+    }
+    // If all conditions are satisfied => Matrix is Identity
+    return true;
+}
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+        
+        if(IsScalarMatrix(Matrix1,3,3)){
+            cout<<"Yes: The Matrix is Scalar"<<endl;
+
+        }else {
+            cout<<"No: The Matrix is Not Scalar"<<endl;
+        }
+        
+
+    return 0;
+    }
+======================================================================================================
+Problem 15#
+Count Number in Matrix
+===================================
+Description:
+Write a Program to count given number in matrix
+==============================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+    short CountNumberInMatrix(int Matrix1[3][3],int NumberFreq ,int Rows, int Cols){
+        
+        short NumberFreqs = 0;
+
+        for(short i = 0 ; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                if(Matrix1[i][j] == NumberFreq){
+                    
+                    NumberFreqs ++;
+                }
+            }
+        }
+
+        return NumberFreqs;
+    }
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{5,10,5},{6,45,10},{5,5,15}};
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        int Number;
+        cout<<"\nEnter The Number To Count in Matrix: ";
+        cin>> Number;
+
+        cout<<"\n------------------"<<endl;
+
+        cout<<"\nNumber "<< Number<< " Count in Matrix is: "<< CountNumberInMatrix(Matrix1,Number,3,3)<<endl;
+
+        
+
+    return 0;
+    }
+===========================================================
+That's it
+:)

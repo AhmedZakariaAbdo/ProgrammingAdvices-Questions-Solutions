@@ -1,0 +1,588 @@
+
+Problem 1#
+3x3 Random Matrix
+====================
+Description:
+Write A Program to fill a 3 x 3 Random Matrix;
+==================================================
+my solution
+============
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+    return RandNum;
+}
+
+void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+    for(short i = 0; i < Row; i ++){
+
+        for(short j = 0; j < Cols; j++){
+
+            arr[i][j] = RandomNumber(1,100);
+        }
+    }
+}
+
+
+void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+    for(short i = 0 ; i < Row; i++){
+
+        for(short j = 0 ; j < Cols; j++){
+
+            cout<< setw(3) << arr[i][j]<<"      ";
+        }
+        cout<<endl;
+    }
+}
+int main(){
+
+    srand((unsigned)time(NULL));
+
+    int arr[3][3];
+
+    FillMatrixWithRandomNumbers(arr,3,3);
+
+    cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+    PrintMatrix(arr,3,3);
+
+ return 0;
+}
+
+
+======================================================================================================
+Problem 2#
+Sum of each row in Matrix
+====================
+Description:
+Write A program to fill a 3x3 Matrix with Random Numbers, then print each row sum;
+======================================================================================
+My solution
+===========
+    #include <iostream>
+    #include <iomanip>
+    #include <string>
+    using namespace std;
+
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+    void SumArrayRowWithMatirxNumbers(int arr[3][3], short Row, short Cols){
+
+        for (short i = 0; i < Row; i++){
+
+            short sum = 0;
+
+            for(short j = 0; j < Cols; j++){
+
+                sum += arr[i][j];
+
+            }
+            cout<<"Row "<< i + 1 <<" Sum = "<<sum<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+
+        cout<<"\nThe Following Are The Sum of each Row in The matrix: \n";
+        SumArrayRowWithMatirxNumbers(arr,3,3);
+
+    return 0;
+ }
+===========================
+Professional solution
+=======================
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+
+    int RowSum(int arr[3][3], short Row_Number, short Cols){
+
+        int sum = 0;
+
+        for(short j = 0; j < Cols; j++){
+
+            sum += arr[Row_Number][j];
+        }
+
+        return sum;
+    }
+
+    void PrintEachRowSum(int arr[3][3], short Row,short Cols){
+
+        cout<<"\nThe Following Are The Sum of each Row in The matrix: \n";
+
+        for(short i = 0; i < Row; i ++){
+
+            cout<<"Row "<< i + 1<< " Sum = "<<RowSum(arr,i,Cols)<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+        PrintEachRowSum(arr,3,3);
+
+
+
+    return 0;
+    }
+
+======================================================================================================
+Problem 3#
+Sum Each Row In Matrix in Array
+==================================
+Description:
+Write a Program to fill a 3x3 matrix with Random Numbers, then Sum each row in separate array and print
+the result
+======================================================================================
+My solution
+============
+    #include <iostream>
+    #include <iomanip>
+    #include <string>
+    using namespace std;
+
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+
+    int RowSum(int arr[3][3], short Row_Number, short Cols){
+
+        int sum = 0;
+
+        for(short j = 0; j < Cols ; j++){
+
+            sum += arr[Row_Number][j];
+        }
+
+        return sum;
+    }
+
+    void PrintEachRowSum(int arr[3][3], short Row,short Cols){
+
+        cout<<"\nThe Following Are The Sum of each Row in The matrix: \n";
+
+        for(short i = 0; i < Row; i ++){
+
+            cout<<"Row "<< i + 1<< " Sum = "<<RowSum(arr,i,Cols)<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    
+void StoreRowSumsInArray(int Arr[3][3],int Arrsum[3],short Rows ,short Cols){
+    
+        for(short i = 0; i < Rows; i ++){
+
+            Arrsum[i] = RowSum(Arr,i,Cols);
+        }
+        
+}
+
+void PrintRowSumsArray(int ArrSum[3], int Row){
+
+    cout << "\nThe Sum Of Each Row Stored in Array:\n";
+
+    for(short i = 0; i < Row; i++){
+
+        cout<<"Row "<< i+1 << " Sum = "<< ArrSum[i]<<endl;
+    }
+}
+
+int main(){
+
+     srand((unsigned)time(NULL));
+
+        int arr[3][3];
+        int ArrSum [3];
+
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+        cout<<"___________________________"<<endl;
+
+        cout<<"\nThe Sum Of Matrix in 1 dimensional Array: \n";
+
+        StoreRowSumsInArray(arr,ArrSum,3,3);
+
+        PrintRowSumsArray(ArrSum,3);
+
+
+    return 0;
+}
+
+======================================================================================
+Problem 4#
+Sum Each Col In Matrix
+==================================
+Description:
+Write A Program to fill a 3x3 matrix with random Numbers, and then
+print col sum
+======================================================================================
+My solution
+============
+    #include <iostream>
+    #include <iomanip>
+    #include <string>
+    using namespace std;
+
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+
+    int ColSum(int arr[3][3], short Col_Number, short Rows){
+
+        int sum = 0;
+
+        for(short i = 0; i < Rows; i++){
+
+            sum += arr[i][Col_Number];
+        }
+
+        return sum;
+    }
+
+    void PrintEachColsSum(int arr[3][3], short Row,short Cols){
+
+        cout<<"\nThe Following Are The Sum of each Col in The matrix: \n";
+
+        for(short i = 0; i < Cols; i ++){
+
+            cout<<"Col "<< i + 1<< " Sum = "<<ColSum(arr,i,Row)<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+        PrintEachColsSum(arr,3,3);
+        
+    return 0;
+    }
+
+======================================================================================
+Problem 5#
+Sum Each Col In Matrix in Another array
+========================================
+Description:
+Write A Program to fill a 3x3 matrix with random Numbers, and then
+sum each col in Another Array and print them
+======================================================================================
+My solution
+============
+    #include <iostream>
+    #include <iomanip>
+    #include <string>
+    using namespace std;
+
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+    void ColSumToAnotherArray(int Arr[3][3],short Rows, short Cols, int Colsum[3]){
+
+        for (short i = 0; i < Cols; i ++){
+
+            Colsum[i] = 0;
+        for(short j = 0; j < Rows; j++){
+
+            Colsum [i] += Arr[j][i];
+            }
+        }
+    }
+
+    void PrintEachColsSum(int Colsum[3], short row){
+
+        cout<<"\nThe Sum of Each Column Stored in Another Array:\n";
+
+        for(short i = 0; i < row; i ++){
+
+            cout<<"Col "<< i + 1<<" Sum = "<< Colsum[i]<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+        int ColSum [3];
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+        ColSumToAnotherArray(arr,3,3,ColSum);
+        
+        PrintEachColsSum(ColSum,3);
+
+        
+    return 0;
+    }
+==================================================================
+Professional Solution
+=====================
+    #include <iostream>
+    #include <iomanip>
+    #include <string>
+    using namespace std;
+
+    int RandomNumber(int From, int To){
+
+        int RandNum = rand() % (To - From + 1)+ From;
+
+        return RandNum;
+    }
+
+    void FillMatrixWithRandomNumbers(int arr[3][3],short Row, short Cols){
+
+
+        for(short i = 0; i < Row; i ++){
+
+            for(short j = 0; j < Cols; j++){
+
+                arr[i][j] = RandomNumber(1,100);
+            }
+        }
+    }
+
+    int ColSum(int arr[3][3], short Col_Number, short Rows){
+
+        int sum = 0;
+
+        for(short i = 0; i < Rows; i++){
+
+            sum += arr[i][Col_Number];
+        }
+
+        return sum;
+    }
+    void ColSumToAnotherArray(int Arr[3][3],int ColArrSum[3], short Cols, short Rows){
+
+        for(short i = 0; i < Cols; i ++){
+
+            ColArrSum[i] = ColSum(Arr,i,Rows);
+        }
+    }
+
+    void PrintEachColsSum(int ColArrSum[3], short row){
+
+        cout<<"\nThe Sum of Each Column Stored in Another Array:\n";
+
+        for(short i = 0; i < row; i ++){
+
+            cout<<"Col "<< i + 1<<" Sum = "<< ColArrSum[i]<<endl;
+        }
+    }
+
+    void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+        
+        for(short i = 0 ; i < Row; i++){
+
+            for(short j = 0 ; j < Cols; j++){
+
+                cout<< setw(3) << arr[i][j]<<"      ";
+            }
+            cout<<endl;
+        }
+    }
+    
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+        int ColArrSum [3];
+
+        FillMatrixWithRandomNumbers(arr,3,3);
+
+        cout<<"\nThe Following Is a 3x3 Random Matrix:\n";
+        PrintMatrix(arr,3,3);
+
+        ColSumToAnotherArray(arr,ColArrSum, 3,3);
+        
+        PrintEachColsSum(ColArrSum,3);
+
+    return 0;
+}
+========================================================================================================

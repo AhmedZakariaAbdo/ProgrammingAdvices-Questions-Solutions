@@ -1,0 +1,347 @@
+Problem 6#
+3x3 ordered Numbers
+====================
+Description:
+Write A Program to fill a 3 x 3 Matrix with ordered Numbers
+====================================================================================================
+My Solution
+==============
+#include <iostream>   // for input/output
+#include <iomanip>    // for formatting output using setw
+#include <vector>     // (not used here, can be removed)
+#include <fstream>    // (not used here, can be removed)
+#include <string>     // (not used here, can be removed)
+#include <ctime>      // for using time in srand (used for random, not needed here)
+
+// using namespace std to avoid writing std:: every time
+using namespace std;
+
+// Function to fill a 3x3 matrix with ordered numbers starting from 1
+void FillMatrixWithOrderedNumbers(int arr[3][3], short Rows, short Cols){
+
+    short counter = 0;  // start counting from 1
+
+    // Loop over columns (i = cols), then rows (j = rows)
+    for(short i = 0; i < Cols; i ++){
+        for(short j = 0; j < Rows; j++){
+            counter++;              // increase the number by 1
+            arr[j][i] = counter;    // store it in the matrix by rows
+        }
+    }
+}
+
+// Function to print the 3x3 matrix nicely
+void PrintMatrix(int arr[3][3], short Row, short Cols){
+
+    for(short i = 0 ; i < Row; i++){
+        for(short j = 0 ; j < Cols; j++){
+            cout << setw(3) << arr[i][j] << "      ";  // print each element with spacing
+        }
+        cout << endl;
+    }
+}
+
+int main(){
+
+    srand((unsigned)time(NULL));  // not used in this program, but used for random numbers usually
+
+    int arr[3][3];  // declare a 3x3 matrix
+
+    FillMatrixWithOrderedNumbers(arr, 3, 3);  // fill it with ordered numbers (1–9)
+    PrintMatrix(arr, 3, 3);                  // display the matrix
+
+    return 0;
+}
+====================================================================================================
+Problem 7#
+ Transpose Matrix
+====================
+Description:
+Write A Program to fill a 3 x 3 Matrix with Transposed numbers
+================================================================
+
+My Solution
+============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+
+    void FillMatrixWithTransposeNumbers(int arr[3][3], int Rows, int cols){
+
+        short counter = 0;
+
+        for(short i = 0; i < cols; i++){
+        
+        for(short j = 0; j < Rows; j++){
+            
+            counter++;
+            arr[j][i] = counter;
+         }    
+        }
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+    
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int arr[3][3];
+        
+        FillMatrixWithTransposeNumbers(arr,3,3);
+        PrintMatrix(arr,3,3);
+
+        
+    return 0;
+    }
+====================================================================================================
+Problem 8#
+Multiply two matrices
+====================
+Description:
+write a program to fill two 3 x 3 matrix with random numbers and then
+Multiply them into a 3rd matrix and print it;
+======================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+// Function to generate a random number between From and To (inclusive)
+int RandomNumber(int From, int To) {
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+// Function to fill a 3x3 matrix with random numbers from 1 to 9
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols) {
+    for (short i = 0; i < Cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            Arr[i][j] = RandomNumber(1, 9);
+        }
+    }
+}
+
+// Function to print a 3x3 matrix in formatted style
+void PrintMatrix(int arr[3][3], int Rows, int Cols) {
+    for (short i = 0; i < Cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            printf(" %0*d   ", 2, arr[i][j]); // Print with leading zeros (2 digits)
+        }
+        cout << endl;
+    }
+}
+
+// Function to multiply two matrices element by element (not real matrix multiplication)
+void MultiplyMatrix(int Matrix1[3][3], int Matrix2[3][3], int MatrixResult[3][3], int Rows, int Cols) {
+    for (short i = 0; i < Cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            MatrixResult[i][j] = Matrix1[i][j] * Matrix2[i][j]; // Element-wise multiplication
+        }
+    }
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator with current time
+
+    int Matrix1[3][3], Matrix2[3][3], MatrixResult[3][3]; // Declare three 3x3 matrices
+
+    FillMatrixWithRandomNumbers(Matrix1, 3, 3); // Fill Matrix1 with random numbers
+    cout << "\nMatrix1:\n";
+    PrintMatrix(Matrix1, 3, 3); // Display Matrix1
+
+    FillMatrixWithRandomNumbers(Matrix2, 3, 3); // Fill Matrix2 with random numbers
+    cout << "\nMatrix2:\n";
+    PrintMatrix(Matrix2, 3, 3); // Display Matrix2
+
+    MultiplyMatrix(Matrix1, Matrix2, MatrixResult, 3, 3); // Multiply element-wise
+
+    cout << "\nResults:\n";
+    PrintMatrix(MatrixResult, 3, 3); // Display the result of multiplication
+
+    return 0;
+}
+==========================================================================================================
+Problem 9#
+Print Middle Row And Col of Matrix
+===================================
+Description:
+Write A program to fill a 3x3 matrix with random Numbers , print it
+then print the Middle row and print middle col
+==================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+using namespace std;
+
+// دالة لتوليد رقم عشوائي بين From و To
+int RandomNumber(int From, int To){
+    int RandNum = rand() % (To - From + 1)+ From;
+    return RandNum;
+}
+
+// دالة لملء مصفوفة 3x3 بأرقام عشوائية من 1 إلى 9
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+    for(short i = 0; i < Cols; i ++){
+        for(short j = 0; j < Rows; j++){
+            Arr[i][j] = RandomNumber(1,9);
+        }
+    }
+}
+
+// دالة لطباعة محتوى المصفوفة
+void PrintMatrix(int arr[3][3], int Rows, int cols){
+    for(short i = 0; i < cols; i++){
+        for(short j = 0; j < Rows; j++){
+            printf(" %0*d   ",2,arr[i][j]); // تنسيق عرض الرقم
+        }
+        cout << endl;
+    }
+}
+
+// دالة لطباعة الصف الأوسط من المصفوفة
+void PrintMiddleRowOfMatrix(int Arr[3][3], int Rows, int Cols){
+    cout << "\nMiddle Rows: \n";
+    for(short j = 0; j < Cols; j++){
+        printf("  %0*d ",2,Arr[Rows / 2][j]); // الصف الأوسط هو Rows / 2
+    }
+    cout << endl;
+}
+
+// دالة لطباعة العمود الأوسط من المصفوفة
+void PrintMiddleColsOfMatrix(int Arr[3][3], int Rows, int Cols){
+    cout << "\nMiddle Cols: \n";
+    for(short i = 0; i < Rows; i ++){
+        printf("  %0*d ",2,Arr[i][Cols / 2]); // العمود الأوسط هو Cols / 2
+    }
+    cout << endl;
+}
+
+int main(){
+    srand((unsigned)time(NULL)); // تهيئة مولد الأرقام العشوائية
+
+    int Matrix[3][3]; // تعريف مصفوفة 3x3
+
+    FillMatrixWithRandomNumbers(Matrix, 3, 3); // تعبئة المصفوفة بأرقام عشوائية
+
+    cout << "\nThe Matrix\n";
+    PrintMatrix(Matrix, 3, 3); // طباعة المصفوفة
+
+    PrintMiddleColsOfMatrix(Matrix, 3, 3); // طباعة العمود الأوسط
+    PrintMiddleRowOfMatrix(Matrix, 3, 3);  // طباعة الصف الأوسط
+
+    return 0;
+}
+==========================================================================================================
+Problem 10#
+Sum Of Matrix
+===================================
+Description:
+Write A Program To fill two 3x3 Matrix With Random Numbers and then
+Then write  a Function to sum all numbers in this matrix and print it
+=======================================================================
+My Solution:
+==============
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+// #include "MyLib.h"
+// using namespace MyLib;
+using namespace std;
+
+// Function to generate a random number between a given range (From, To)
+int RandomNumber(int From, int To) {
+    // Generate a random number in the range [From, To]
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum; // Return the generated random number
+}
+
+// Function to fill a matrix with random numbers
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols) {
+    // Loop through each row and column to fill the matrix with random numbers
+    for(short i = 0; i < Cols; i++) {
+        for(short j = 0; j < Rows; j++) {
+            Arr[i][j] = RandomNumber(1, 9); // Assign a random number between 1 and 9 to each matrix element
+        }
+    }
+}
+
+// Function to print the matrix in a structured way
+void PrintMatrix(int arr[3][3], int Rows, int cols) {
+    // Loop through each row and column to print the matrix elements
+    for(short i = 0; i < cols; i++) {
+        for(short j = 0; j < Rows; j++) {
+            // Print each element with a width of 2 digits for alignment
+            printf(" %0*d   ", 2, arr[i][j]);
+        }
+        cout << endl; // Print a new line after each row for proper formatting
+    }
+}
+
+// Function to calculate the sum of all elements in the matrix
+int SumMatrixElements(int Matrix1[3][3], int Rows, int Cols) {
+    int Sum = 0; // Initialize sum to 0
+
+    // Loop through each row and column to add the elements to the sum
+    for(short i = 0; i < Cols; i++) {
+        for(short j = 0; j < Rows; j++) {
+            Sum += Matrix1[i][j]; // Add each element to the sum
+        }
+    }
+
+    // Return the calculated sum of matrix elements
+    return Sum;
+}
+
+int main() {
+    srand((unsigned)time(NULL)); // Seed the random number generator with current time
+
+    int Matrix1[3][3]; // Declare a 3x3 matrix
+
+    // Fill the matrix with random numbers between 1 and 9
+    FillMatrixWithRandomNumbers(Matrix1, 3, 3);
+
+    // Print the matrix
+    cout << "\nMatrix1: \n";
+    PrintMatrix(Matrix1, 3, 3);
+
+    // Print the sum of matrix elements
+    cout << "\nSum of Matrix: " << SumMatrixElements(Matrix1, 3, 3) << endl;
+
+    return 0; // Exit the program
+}
+==========================================================================================================
+That's it
+============:-)============

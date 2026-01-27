@@ -1,0 +1,491 @@
+Problem 16#
+Check Sparse matrix
+===================================
+Description:
+Write a Program to Check if the matrix is sparce or not
+==============================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+    bool IsSParse(int Matrix[3][3],int Rows,int Cols){
+
+        short zerocount = 0;
+        short nonzero = 0;
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                if (Matrix[i][j] == 0){
+                    
+                    zerocount ++;
+                }else {
+
+                    nonzero++;
+                }
+            }
+        }
+
+        return zerocount > nonzero;
+    }
+    
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{0,0,0},{6,45,10},{5,5,15}};
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+
+        if(IsSParse(Matrix1,3,3)){
+            
+            cout<<"\nYes: It's Sparse"<<endl;
+        }else{
+            cout<<"\nNo: It's not Sparse"<<endl;
+        }
+
+    return 0;
+}
+===================================================================================================================
+Problem 17#
+Number Exists in Matrix
+===================================
+Description:
+Write A Program to check if a given number Exists in matrix or not
+==============================================================================
+My Solution:
+==============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+using namespace std;
+
+// Function to generate a random number between From and To (inclusive)
+int RandomNumber(int From, int To) {
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+// Function to fill a matrix with random numbers (only 0 or 1 in this case)
+void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols) {
+    for (short i = 0; i < Cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            Arr[i][j] = RandomNumber(0, 1);
+        }
+    }
+}
+
+// Function to print the contents of a matrix
+void PrintMatrix(int arr[3][3], int Rows, int cols) {
+    for (short i = 0; i < cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            printf(" %0*d   ", 2, arr[i][j]); // print with 2-digit width
+        }
+        cout << endl;
+    }
+}
+
+// Function to search for a specific number in the matrix
+bool FindNumberInMatrix(int Matrix[3][3], int Number, int Rows, int Cols) {
+    for (short i = 0; i < Cols; i++) {
+        for (short j = 0; j < Rows; j++) {
+            if (Matrix[i][j] == Number)
+                return true; // return true as soon as the number is found
+        }
+    }
+    return false; // number not found in the matrix
+}
+
+int main() {
+
+    // Seed the random number generator with the current time
+    srand((unsigned)time(NULL));
+
+    // Initialize a 3x3 matrix with specific values
+    int Matrix1[3][3] = { {5, 0, 0}, {6, 45, 10}, {5, 5, 15} };
+
+    cout << "\nMatrix1: \n";
+    PrintMatrix(Matrix1, 3, 3); // Display the matrix
+
+    cout << "\n------------------" << endl;
+
+    int Number = 0;
+    cout << "\nPlease Enter The Number You Are Looking For: ";
+    cin >> Number;
+
+    // Check if the number exists in the matrix
+    if (FindNumberInMatrix(Matrix1, Number, 3, 3)) {
+        cout << "\nYes: It Exists" << endl;
+    } else {
+        cout << "\nNo: It Does Not Exist" << endl;
+    }
+
+    return 0;
+}
+=======================================================================================================
+Problem 18#
+Intersected Number in Matrix
+===================================
+Description:
+Write A Program to Print The Intersected Numbers in Two Given Matrices
+==============================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+   bool FindNumberInMatrix(int Matrix[3][3], int Number, int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                if(Matrix[i][j] == Number)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+    void PrintIntersectedNumbers(int Matrix1[3][3],int Matrix2[3][3], int Rows, int Cols){
+
+        int Number = 0;
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+            Number = Matrix1[i][j];
+
+            if(FindNumberInMatrix(Matrix2,Number,Rows,Cols)){
+                
+                cout<<setw(3)<< Number<<"    ";
+            }
+        }
+        }
+    }
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{5,0,0},{6,45,10},{5,9,15}};
+        int Matrix2[3][3] = {{5,10,0},{6,60,10},{19,8,15}};
+        
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+
+        PrintMatrix(Matrix2,3,3);
+        cout<<"\n------------------"<<endl;
+
+        cout<<"\nThe Intersected Numbers Are: ";
+        PrintIntersectedNumbers(Matrix1,Matrix2,3,3);   
+
+    return 0;
+}
+=======================================================================================================
+Problem 19#
+min / max Number in Matrix
+===================================
+Description:
+Write A Program to print the minimum and maximum Numbers in matrix
+==============================================================================
+My Solution:
+==============
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+
+
+    int MinNumberInMatrix(int Matrix1[3][3], int Rows, int Cols){
+
+        int Min = Matrix1[0][0];
+        
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                if(Matrix1[i][j] < Min){
+                    
+                    Min = Matrix1[i][j];
+                }
+            }
+        }
+        return Min;
+    }
+
+    int MaxNumberInMatrix(int Matrix1[3][3], int Rows, int Cols){
+
+        int Max = Matrix1[0][0];
+        
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                if(Matrix1[i][j] > Max){
+                    
+                    Max = Matrix1[i][j];
+                }
+            }
+        }
+        return Max;
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{5,0,0},{6,45,10},{5,9,15}};
+        
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+
+        cout<<"\nThe Minimum Number In Matrix : ";
+        cout<< MinNumberInMatrix(Matrix1,3,3)<<endl;
+
+        cout<<"\nThe Maximum Number In Matrix: ";
+        cout<<MaxNumberInMatrix(Matrix1,3,3)<<endl;
+        
+
+    return 0;
+}
+=======================================================================================================
+Problem 20#
+Palindrom Matrix
+===================================
+Description:
+Write A Program to check it the matrix is Palindrom or not
+==============================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+    
+
+int RandomNumber(int From, int To){
+
+    int RandNum = rand() % (To - From + 1)+ From;
+
+
+    return RandNum;
+}
+
+    void FillMatrixWithRandomNumbers(int Arr[3][3], int Rows, int Cols){
+
+        for(short i = 0; i < Cols; i ++){
+
+            for(short j = 0; j < Rows; j++){
+
+                Arr[i][j] = RandomNumber(0,1);
+            }
+        }
+        
+    }
+
+    void PrintMatrix(int arr[3][3],int Rows, int cols){
+
+        for(short i = 0; i < cols; i++){
+
+            for(short j = 0; j < Rows; j++){
+
+                printf(" %0*d   ",2,arr[i][j]);
+               // cout<<setw(3)<< arr[i][j]<<"    ";
+            }
+            cout<<endl;
+        }
+    }
+
+
+    int IsPalindromMatrix(int matrix1[3][3], int Rows, int Cols){
+
+        
+        for(short i = 0; i < Rows; i ++){
+
+            for(short j = 0; j < Cols / 2; j++){
+
+                if(matrix1[i][j] != matrix1[i][Cols - 1 - j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+        int Matrix1[3][3] = {{5,0,0},{6,45,10},{5,9,15}};
+        
+
+        cout<<"\nMatrix1: \n";
+        PrintMatrix(Matrix1,3,3);
+        
+        cout<<"\n------------------"<<endl;
+    
+        if(IsPalindromMatrix(Matrix1,3,3)){
+            cout<<"\nYes: Matrix is palindrome"<<endl;
+
+        }else{
+            cout<<"\nNo: Matrix Is not Palindrome"<<endl;
+        }
+
+    return 0;
+}
+=====================================================================================================
+That's ittt
+:-)

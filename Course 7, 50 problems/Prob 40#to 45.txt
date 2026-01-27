@@ -1,0 +1,299 @@
+Problem 41#
+Reverse words
+===================================
+Description:
+Write A Program To Read a string and Reverse it's words
+=========================================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+ 
+    string ReadString(){
+
+        string Word;
+
+        cout<<"Please Enter Your String: ";
+        getline(cin,Word);  
+
+        return Word;
+    }
+
+
+    char ReadCharacter(){
+
+        char C;
+
+        cout<<"Please Enter Character: ";
+        cin>> C;
+
+        return C;
+    }
+
+        vector<string> SplitString(string s1, string Delim){
+
+        vector<string> Vstring;
+
+        short pos = 0;
+        string sWord;
+
+        while((pos = s1.find(Delim)) != std::string::npos){
+
+            sWord = s1.substr(0,pos);
+
+            if(sWord != ""){
+
+                Vstring.push_back(sWord);
+            }
+
+            s1.erase(0,pos + Delim.length());
+
+        }
+
+        if(s1 != ""){
+            
+            Vstring.push_back(s1);
+        }
+
+        return Vstring;
+    }
+
+
+    string ReverseWordInString(string s1){
+
+        
+        vector<string> vString;
+
+        string s2 = "";
+
+        vString = SplitString(s1," ");
+
+        vector<string>::iterator iter = vString.end();
+
+        while (iter != vString.begin())
+        {
+            --iter;
+
+            s2 += *iter + " ";
+        }
+
+        s2 = s2.substr(0, s2.length() - 1);
+
+        return s2;
+        
+    }
+
+
+    int main(){
+
+        srand((unsigned)time(NULL));
+
+    string s1 = ReadString();
+
+    cout<<"\n\nString After Reversing Words: ";
+    cout<<"\n"<< ReverseWordInString(s1)<<endl;
+    return 0;
+}
+
+
+==================================================================
+Problem 42#
+Replace Words
+===================================
+Description:
+Write A Program To Replace Words in string
+=========================================================================================
+My Solution:
+==============
+
+    #include <iostream>
+    #include <iomanip>
+    #include <vector>
+    #include<fstream>
+    #include <string>
+    #include <ctime>
+    //#include "MyLib.h"
+    //using namespace MyLib;
+    using namespace std;
+
+
+    string ReplaceWordsInStringUsingBuiltInFunctions(string s1, string StringToreplace, string SReplaceTo){
+
+        short pos = s1.find(StringToreplace);
+        
+        while(pos != std::string::npos){
+
+            s1 = s1.replace(pos,StringToreplace.length(), SReplaceTo);
+            pos = s1.find(StringToreplace); // find next
+        }
+        return s1;
+    }
+
+
+
+    int main(){
+
+    srand((unsigned)time(NULL));
+
+    string s1 = "Welcome To Egypt , Egypt Is A Nice Country";
+    string StringToReplace = "Egypt";
+    string ReplaceTo = "USA";
+
+    cout<<"\nOriginal String\n"<<s1<<endl;
+    cout<<"\n\nString After Replace: "<<endl;
+    cout<<ReplaceWordsInStringUsingBuiltInFunctions(s1,StringToReplace,ReplaceTo)<<endl;
+
+    
+
+    
+    return 0;
+}
+=================================================================
+Problem 44#
+Remove Punctuations
+===================================
+Description:
+Write A Program To Remove all Punctuations from a string
+=========================================================================================
+My Solution:
+=============
+#include <iostream>   // for input/output operations (cin, cout)
+#include <iomanip>    // for formatting output (not used here)
+#include <vector>     // for using vector (not used here)
+#include <fstream>    // for file handling (not used here)
+#include <string>     // for using string type
+#include <ctime>      // for working with time (used for srand)
+
+// using standard namespace to avoid writing std:: repeatedly
+using namespace std;
+
+// Function to remove punctuation marks from a string
+string RemovePunctuationsFromString(string s1) {
+
+    string s2 = ""; // To store the result without punctuation
+
+    // Loop through each character in the input string
+    for (short i = 0; i < s1.length(); i++) {
+
+        // Check if the character is NOT a punctuation mark
+        if (!ispunct(s1[i])) {
+
+            // If not, add it to the new string
+            s2 += s1[i];
+        }
+    }
+
+    // Return the cleaned string without punctuation
+    return s2;
+}
+
+int main() {
+
+    // Seed the random number generator (not needed in this program)
+    srand((unsigned)time(NULL));
+
+    // Original string containing punctuation
+    string s1 = "Welcom To Egypt, Egypt it's a nice country.";
+
+    // Print the original string
+    cout << "Original String: \n" << s1;
+
+    // Print the string after removing punctuation
+    cout << "\n\nPunctuations removed:\n";
+    cout << RemovePunctuationsFromString(s1) << endl;
+
+    return 0; // Exit program
+}
+=================================================================
+Problem 45#
+Convert Record To line
+===================================
+Description:
+Write A Program To Read A Bank client data record and convert it to one line
+=========================================================================================
+My Solution:
+=============
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <ctime>
+//#include "MyLib.h"
+//using namespace MyLib;
+using namespace std;
+
+// Define a struct to hold client data
+struct sClient {
+    
+    string AccountNumber;
+    string PinCode;
+    string Name;
+    string Phone;
+    double AccountBalance;
+};
+
+// Function to read a new client record from user input
+sClient ReadNewClient() {
+    sClient Client;
+
+    cout << "\t\tPlease Enter Client Data\n\n";
+
+    cout << "\nEnter Account Number: ";
+    getline(cin, Client.AccountNumber);
+
+    cout << "\nEnter PinCode: ";
+    getline(cin, Client.PinCode);
+
+    cout << "\nEnter Name: ";
+    getline(cin, Client.Name);
+
+    cout << "\nEnter Phone: ";
+    getline(cin, Client.Phone);
+
+    cout << "\nEnter Account Balance: ";
+    cin >> Client.AccountBalance;
+
+    return Client;
+}
+
+// Function to convert client struct into a single line string
+// Fields are separated using a custom separator (default = "#//#")
+string ConvertRecordToline(sClient Client, string Sperator = "#//#") {
+    string stClientRecord = "";
+
+    stClientRecord += Client.AccountNumber + Sperator;
+    stClientRecord += Client.PinCode + Sperator;
+    stClientRecord += Client.Name + Sperator;
+    stClientRecord += Client.Phone + Sperator;
+    stClientRecord += to_string(Client.AccountBalance); // Convert double to string
+
+    return stClientRecord;
+}
+
+int main() {
+
+    srand((unsigned)time(NULL)); // Seed random (not used here but good practice)
+
+    sClient Client;
+
+    // Read client data from user
+    Client = ReadNewClient();
+
+    // Output the converted single-line record
+    cout << "\n\nClient Record For Saving is: \n";
+    cout << ConvertRecordToline(Client) << endl;
+
+    return 0;
+}
+=================================================================
