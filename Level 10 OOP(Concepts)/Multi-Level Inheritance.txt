@@ -1,0 +1,275 @@
+//======================================================
+// Multi-Level Inheritance Example
+//
+// clsPerson   -> Base Class
+// clsEmployee -> Derived from clsPerson
+// clsDeveloper -> Derived from clsEmployee
+//
+// Demonstrates:
+// 1. Encapsulation
+// 2. Inheritance
+// 3. Constructor Initialization List
+// 4. Function Overriding
+// 5. Multi-Level Inheritance
+//======================================================
+
+#include <iostream>
+using namespace std;
+
+//======================================================
+// Base Class: clsPerson
+// Stores general person information and common actions
+//======================================================
+class clsPerson{
+
+private:
+
+```
+short _ID;                 // Read-only identifier
+string _First_Name;
+string _Last_Name;
+string _Full_Name;
+string _Email;
+string _Phone;
+```
+
+public:
+
+```
+// Constructor initializes all person data
+clsPerson(int Id,string FirstName,string LastName,
+          string FullName,string Email,string Phone){
+
+    _ID = Id;
+
+    _First_Name = FirstName;
+    _Last_Name = LastName;
+    _Full_Name = FullName;
+    _Email = Email;
+    _Phone = Phone;
+}
+
+// Setters & Getters (Encapsulation)
+void SetFirstName(string FirstName){
+    _First_Name = FirstName;
+}
+
+string GetFirstName(){
+    return _First_Name;
+}
+
+void SetLastName(string LastName){
+    _Last_Name = LastName;
+}
+
+string GetLastName(){
+    return _Last_Name;
+}
+
+void SetFullName(string FullName){
+    _Full_Name = FullName;
+}
+
+string GetFullName(){
+    return _Full_Name;
+}
+
+void SetEmail(string Email){
+    _Email = Email;
+}
+
+string GetEmail(){
+    return _Email;
+}
+
+void SetPhone(string Phone){
+    _Phone = Phone;
+}
+
+string GetPhone(){
+    return _Phone;
+}
+
+// Simulates sending email
+void SendEmail(string Subject,string Content){
+
+    cout << "\nEmail sent successfully\n";
+}
+
+// Simulates sending SMS
+void SendSMS(string Content){
+
+    cout << "\nSMS sent successfully\n";
+}
+
+// Read-only ID
+int GetID(){
+
+    return _ID;
+}
+
+// Print person information
+void Print(){
+
+    cout<<"Person Information\n";
+}
+```
+
+};
+
+//======================================================
+// Derived Class: clsEmployee
+// Inherits all properties from clsPerson
+// Adds employee-related data
+//======================================================
+class clsEmployee : public clsPerson{
+
+private:
+
+```
+string _Title;
+string _Department;
+float _Salary;
+```
+
+public:
+
+```
+// Calls Base Constructor using Initialization List
+clsEmployee(int id,string firstname,string lastname,
+            string fullname,string email,string phone,
+            string title,string department,float salary)
+
+: clsPerson(id,firstname,lastname,
+            fullname,email,phone)
+{
+
+    _Title = title;
+    _Department = department;
+    _Salary = salary;
+}
+
+void SetTitle(string title){
+    _Title = title;
+}
+
+string GetTitle(){
+    return _Title;
+}
+
+void SetSalary(float salary){
+    _Salary = salary;
+}
+
+float GetSalary(){
+    return _Salary;
+}
+
+void SetDepartment(string department){
+    _Department = department;
+}
+
+string GetDepartment(){
+    return _Department;
+}
+
+// Function Overriding
+// Extends Person Print()
+void Print(){
+
+    cout<<"Employee Information\n";
+}
+```
+
+};
+
+//======================================================
+// Derived Class: clsDeveloper
+// Inherits from clsEmployee
+// Adds programming language specialization
+//======================================================
+class clsDeveloper : public clsEmployee{
+
+private:
+
+```
+string _MainProgrammingLanguage;
+```
+
+public:
+
+```
+// Constructor forwards values upward
+clsDeveloper(int ID,string FirstName,
+             string Lastname,string Fullname,
+             string Gmail,string Phone,
+             string Title,string Department,
+             float Salary,
+             string MainProgrammingLanguage)
+
+: clsEmployee(ID,
+              FirstName,
+              Lastname,
+              Fullname,
+              Gmail,
+              Phone,
+              Title,
+              Department,
+              Salary)
+
+{
+
+    _MainProgrammingLanguage =
+    MainProgrammingLanguage;
+}
+
+void SetMainProgrammingLanguage(string Language){
+
+    _MainProgrammingLanguage =
+    Language;
+}
+
+string GetMainProgrammingLanguage(){
+
+    return _MainProgrammingLanguage;
+}
+
+// Overrides Employee Print()
+void Print(){
+
+    cout<<"Developer Information\n";
+
+    cout<<"Main Language: "
+        << GetMainProgrammingLanguage();
+}
+```
+
+};
+
+//======================================================
+// Program Entry Point
+// Creates developer object and prints details
+//======================================================
+int main(){
+
+```
+clsDeveloper Programmer1(
+    1,
+    "Amir",
+    "Mohammed",
+    "Amer Mohammed",
+    "Amir@gmail.com",
+    "+2026551",
+    "Back-End",
+    "Programmers",
+    5000,
+    ".Net"
+);
+
+Programmer1.Print();
+
+return 0;
+```
+
+}
+

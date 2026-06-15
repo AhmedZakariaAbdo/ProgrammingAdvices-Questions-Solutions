@@ -1,0 +1,402 @@
+Exercise 2 – Employee Class
+Overview
+
+This program demonstrates how to model an Employee using Object-Oriented Programming (OOP).
+
+The class clsEmployee stores employee information and provides methods to manage and access employee data.
+
+The employee object contains:
+
+Employee ID
+First Name
+Last Name
+Full Name
+Job Title
+Email
+Phone Number
+Salary
+Department
+
+The class also allows:
+
+Updating employee information.
+Reading employee information.
+Sending Emails.
+Sending SMS messages.
+Printing employee details.
+OOP Concepts Used
+1. Class
+
+The program defines a class called:
+
+class clsEmployee
+{
+    ...
+};
+
+The class acts as a blueprint for creating employee objects.
+
+2. Object Creation
+
+An object is created from the class:
+
+clsEmployee Employee1(
+    10,
+    "Ahmed",
+    "Zakaria",
+    "Ahmed Zakaria",
+    "Software Engineer",
+    "@gmail.com",
+    "15515",
+    15000,
+    "IT");
+
+This object represents a real employee inside a company.
+
+3. Encapsulation
+
+All employee data is stored inside private members:
+
+private:
+
+string _FirstName;
+string _LastName;
+string _FullName;
+string _Title;
+string _Email;
+string _Phone;
+double _Salary;
+string _Department;
+short _ID;
+
+The data cannot be accessed directly from outside the class.
+
+Example:
+
+Employee1._Salary = 20000; // Not Allowed
+
+Instead, public methods are used.
+
+4. Constructor
+
+The constructor initializes employee data when the object is created.
+
+clsEmployee(short ID,
+            string FirstName,
+            string LastName,
+            string FullName,
+            string Title,
+            string Email,
+            string Phone,
+            double Salary,
+            string Department)
+{
+    ...
+}
+
+The constructor ensures that the employee starts with valid information.
+
+5. Getters and Setters
+
+The class provides setters and getters for employee properties.
+
+Setter Example
+void SetEmail(string Email)
+{
+    _Email = Email;
+}
+Getter Example
+string GetEmail()
+{
+    return _Email;
+}
+
+Usage:
+
+Employee1.SetEmail("Ahmed@gmail.com");
+
+cout << Employee1.GetEmail();
+
+Output:
+
+Ahmed@gmail.com
+6. Read-Only ID
+
+The employee ID can only be read.
+
+short GetID()
+{
+    return _ID;
+}
+
+There is no setter for _ID.
+
+This means the ID becomes read-only after object creation.
+
+7. Employee Behaviors
+
+Besides storing data, the employee can perform actions.
+
+Send Email
+void SendEmail(string Subj, string Content)
+{
+    ...
+}
+
+Example:
+
+Employee1.SendEmail(
+    "Hi",
+    "How Are You?");
+
+Output:
+
+The Email Sent Successfully To:
+Ahmed@gmail.com
+
+Subject: Hi
+Body: How Are You?
+Send SMS
+void SendSMS(string Content)
+{
+    ...
+}
+
+Example:
+
+Employee1.SendSMS(
+    "Hello Ahmed I'm Waiting For You on Monday");
+
+Output:
+
+The Message Have Been Sent Successfully To:
+15515
+
+Hello Ahmed I'm Waiting For You on Monday
+8. Print Employee Information
+
+The PrintInfo() method displays all employee information.
+
+Employee1.PrintInfo();
+
+Output:
+
+Info:
+______________________________
+
+ID         : 10
+First Name : Ahmed
+Last Name  : Zakaria
+Full Name  : Ahmed Zakaria
+Title      : Software Engineer
+Email      : @gmail.com
+Phone      : 15515
+Salary     : 15000
+Department : IT
+
+______________________________
+Real-World Company Example
+
+In a company like Microsoft, Google, or Amazon, every employee is stored as a record inside the Human Resources (HR) system.
+
+For example:
+
+clsEmployee Employee1;
+
+The HR system may store:
+
+Employee ID
+Employee Name
+Job Title
+Department
+Salary
+Email
+Phone Number
+
+The company can then:
+
+Update employee information.
+Print employee records.
+Send company announcements via email.
+Send SMS notifications.
+Manage departments and salaries.
+
+My class simulates a simplified version of such an HR system.
+--------------------------------------------------------------------------
+The code:
+---------------------
+#include <iostream>
+using namespace std;
+
+class clsEmployee{
+
+    private:
+
+    string _FirstName;
+    string _LastName;
+    string _FullName;
+    string _Title;
+    string _Email;
+    string _Phone;
+    double _Salary;
+    string _Department;
+    short _ID;
+
+    public:
+    
+    clsEmployee(short ID,string FirstName,string LastName,string FullName,string Title,string Email,string Phone,double Salary, string Department){
+
+        _ID = ID;
+        _FirstName = FirstName;
+        _LastName = LastName;
+        _FullName = FullName;
+        _Department = Department;
+        _Title = Title;
+        _Email = Email;
+        _Phone = Phone;
+        _Salary = Salary;
+        _Department = Department;
+    }
+
+    
+    void SetFirstName(string FirstName){
+
+        _FirstName = FirstName;
+    }
+    
+    string GetFirstName(){
+
+        return _FirstName;
+    }
+
+    void SetLastName(string LastName){
+        
+        _LastName = LastName;
+    }
+
+    string GetLastName(){
+
+        return _LastName;
+    }
+    
+    void SetFullName(string FullName){
+
+        FullName = _FirstName + " " +  _LastName;
+        
+        _FullName = FullName;
+    }
+    
+    string GetFullName(){
+
+        return _FullName;
+    }
+
+    void SetTitle(string Title){
+
+        _Title = Title;
+    }
+    
+    string GetTitle(){
+
+        return _Title;
+    }
+
+    void SetEmail(string Email){
+
+        _Email = Email;
+    }
+
+    string GetEmail(){
+        
+        return _Email;
+    }
+
+    void SetPhone(string Phone){
+
+        _Phone = Phone;
+    }
+
+    string GetPhone(){
+        
+        return _Phone;
+    }
+
+    void SetSalary(double Salary){
+
+        _Salary = Salary;
+    }
+
+    double GetSalary(){
+        
+        return _Salary;
+    }
+    
+    void SetDepartment(string Department){
+
+        _Department = Department;
+    }
+    
+    string GetDepartment(){
+
+        return _Department;
+    }
+
+    short GetID(){
+
+        return _ID; // Read Only
+    }
+
+    void PrintInfo(){
+
+        cout<<"Info:"<<endl;
+        
+        cout<<"______________________________"<<endl;
+        cout<<"ID         : "<<_ID<<endl;
+        cout<<"First Name : "<<_FirstName<<endl;
+        cout<<"Last Name  : "<<_LastName<<endl;
+        cout<<"Full Name  : "<<_FullName<<endl;
+        cout<<"Title      : "<<_Title<<endl;
+        cout<<"Email      : "<<_Email<<endl;
+        cout<<"Phone      : "<<_Phone<<endl;
+        cout<<"Salary     : "<<_Salary<<endl;
+        cout<<"Department : "<<_Department<<endl;
+        cout<<"\n______________________________"<<endl;
+    }
+    
+    void SendEmail(string Subj, string Content){
+
+        cout<<"\nThe Email Sent Successfully To: "<< _Email<<endl;
+        
+        cout<<"Subject: "<<Subj<<endl;
+        cout<<"Body: "<<Content<<endl;
+    }
+
+    void SendSMS(string Content){
+
+        cout<<"\nThe Message Have Been Sent Succefully To: "<< _Phone<<endl;
+        cout<<Content<<endl;
+    }
+
+
+
+};
+
+
+int main() {
+
+    clsEmployee Employee1(10,"Ahmed","Zakaria","Ahmed Zakaria","Software Engineer","@gmail.com","15515",15000,"IT");
+
+    Employee1.PrintInfo();
+
+    Employee1.SendEmail("Hi","How Are You?");
+
+    Employee1.SendSMS("Hello Ahmed I'm Waiting For You on Monday");
+
+    Employee1.SetEmail("Ahmed@gmail.com");
+    cout<<"\n"<<Employee1.GetEmail()<<endl;
+
+return 0;
+
+}
+=========================================================================================================================================================================
+
